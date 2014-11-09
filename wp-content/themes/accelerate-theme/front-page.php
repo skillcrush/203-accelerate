@@ -18,8 +18,6 @@ get_header(); ?>
 	<div class="site-content">
 		<?php while ( have_posts() ) : the_post(); ?>
 			<div class='homepage-hero'>
-				<h1>Accelerate Your Marketing.</h1>
-				<h3>Save time. Increase sales. Make customers happier.</h3>
 				<?php the_content(); ?>
 				<a class="button" href="<?php echo home_url(); ?>/blog">View Our Work</a>
 			</div>
