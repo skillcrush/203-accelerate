@@ -25,20 +25,45 @@
  * @since Accelerate Marketing 1.0
  */
 
+register_nav_menu('top-nav', 'Top Nav');
+register_nav_menu('social-media', 'Social Media Nav');
+
 // Custom post types function
 function create_custom_post_types() {
-	register_post_type( 'case_studies',
+// create a case study custom post type
+	register_post_type('case_studies',
 		array(
 			'labels' => array(
 				'name' => __( 'Case Studies' ),
 				'singular_name' => __( 'Case Study' )
-			),
+				),
 			'public' => true,
 			'has_archive' => true,
-			'rewrite' => array('slug' => 'case-studies'),
-		)
+			'rewrite' => array(
+				'slug' => 'case-studies'
+				),
+			)
 	);
 }
 
-// Hooks the custom function up to the theme
+// Hook this custom post type function into the theme
 add_action( 'init', 'create_custom_post_types' );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

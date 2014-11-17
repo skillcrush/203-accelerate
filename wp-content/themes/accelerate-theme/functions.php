@@ -1,6 +1,6 @@
 <?php
 /**
- * Accelerate Marketing functions and definitions
+ * Accelerate Marketing Child functions and definitions
  *
  * Set up the theme and provides some helper functions, which are used in the
  * theme as custom template tags. Others are attached to action and filter
@@ -27,3 +27,4 @@
 
 register_nav_menu('top-nav', 'Top Nav');
 register_nav_menu('social-media', 'Social Media Nav');
+
