@@ -22,6 +22,32 @@
 	background: none repeat scroll 0 0 #45ac9d;
 }
 
+#masthead nav ul {
+    list-style-type: none;
+    margin: 0;
+}
+
+.nav-menu {
+margin:0;
+}
+
+.nav-menu ul li {
+	float:left;
+	margin:0 30px;
+	text-transform:uppercase;
+}
+
+/* Footer Styles */
+
+.social-media-menu li {
+	float:left;
+	margin:0 5px;
+	text-indent:-10000px;
+	list-style-type:none;
+}
+
+
+
 /* blog post on homepage */
 .recent-posts {
 	overflow: hidden;
