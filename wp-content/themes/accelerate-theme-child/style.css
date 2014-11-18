@@ -112,7 +112,8 @@ margin:0;
 /* Case Studies */
 
 article.case-study {
-	margin:40px 0 0;
+    clear: both;
+    margin: 40px 0 0;
 }
 
 aside.case-study-sidebar {
@@ -121,14 +122,29 @@ width: 314px;
 margin: 0 40px 0 0;
 }
 
+aside.case-study-sidebar h5 {
+    color: #999;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.33333;
+    margin: 0 0 12px;
+}
+
+aside.case-study-sidebar h6 {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.5;
+    margin: 0 0 50px;
+}
+
 div.case-study-images {
 	float:left;
 	width:606px;
 }
 
 div.case-study-images img {
-	margin-bottom:50px;
-	border:1px solid #dddddd;
+    border: 1px solid #dddddd;
+    margin-bottom: 100px;
 }
 
 
