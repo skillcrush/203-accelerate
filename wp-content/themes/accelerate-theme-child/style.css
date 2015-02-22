@@ -1,0 +1,62 @@
+/*
+Theme Name:   Accelerate Theme Child
+Theme URI:    http://example.com/accelerate-theme-child/
+Description:  Accelerate Child Theme - Accelerate
+Author:       MJDevelopZ
+Author URI:   http://www.seraphinaknits.com
+Template:     accelerate-theme
+Version:      1.0.0
+Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+Text Domain:  accelerate-theme-child
+*/
+
+@import url("../accelerate-theme/style.css");
+
+/*Homepage Styles*/
+.home-page {
+    background: url("img/taxi-photo.jpg") no-repeat scroll center / cover rgba(0, 0, 0, 0);
+}
+
+.blog-post{
+	width: 50%;
+}
+
+.blog-post h4{
+	font-family: 'Montserrat';
+	font-size:16px;
+	color: #a6a6a6;
+	text-transform: uppercase;
+}
+
+.blog-post h2{
+	font-family: 'Montserrat';
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.blog-post .read-more-link{
+	font-family: 'Montserrat';
+	font-size: 24px;
+	font-weight: bold;
+	color: #45ac9d;
+	text-transform: uppercase;
+}
+
+/*Top Navigation*/
+#masthead{
+	background: none repeat scroll 0 0 #45AC9D;
+}
+
+#masthead nav ul {
+	list-style-type:none;
+}
+
+#masthead nav ul li{
+	list-style-type: none;
+}
+
+/*Homepage Btn*/
+.button{
+	background: none repeat scroll 0 0 #45AC9D;
+}
+
