@@ -18,8 +18,10 @@
  *
  * @since 1.5.0
  *
- * @param string $option Name of option to retrieve. Expected to not be SQL-escaped.
- * @param mixed $default Optional. Default value to return if the option does not exist.
+ * @global wpdb $wpdb
+ *
+ * @param string $option  Name of option to retrieve. Expected to not be SQL-escaped.
+ * @param mixed  $default Optional. Default value to return if the option does not exist.
  * @return mixed Value set for the option.
  */
 function get_option( $option, $default = false ) {
@@ -32,7 +34,7 @@ function get_option( $option, $default = false ) {
 	/**
 	 * Filter the value of an existing option before it is retrieved.
 	 *
-	 * The dynamic portion of the hook name, $option, refers to the option name.
+	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
 	 * Passing a truthy value to the filter will short-circuit retrieving
 	 * the option value, returning the passed value instead.
@@ -52,20 +54,19 @@ function get_option( $option, $default = false ) {
 	if ( ! defined( 'WP_INSTALLING' ) ) {
 		// prevent non-existent options from triggering multiple queries
 		$notoptions = wp_cache_get( 'notoptions', 'options' );
-		if ( isset( $notoptions[$option] ) )
-
+		if ( isset( $notoptions[ $option ] ) ) {
 			/**
 			 * Filter the default value for an option.
 			 *
-			 * The dynamic portion of the hook name, $option, refers
-			 * to the option name.
+			 * The dynamic portion of the hook name, `$option`, refers to the option name.
 			 *
 			 * @since 3.4.0
 			 *
-			 * @param mixed $default The default value to return if the option
-			 *                       does not exist in the database.
+			 * @param mixed $default The default value to return if the option does not exist
+			 *                       in the database.
 			 */
 			return apply_filters( 'default_option_' . $option, $default );
+		}
 
 		$alloptions = wp_load_alloptions();
 
@@ -82,6 +83,9 @@ function get_option( $option, $default = false ) {
 					$value = $row->option_value;
 					wp_cache_add( $option, $value, 'options' );
 				} else { // option does not exist, so we must cache its non-existence
+					if ( ! is_array( $notoptions ) ) {
+						 $notoptions = array();
+					}
 					$notoptions[$option] = true;
 					wp_cache_set( 'notoptions', $notoptions, 'options' );
 
@@ -112,7 +116,7 @@ function get_option( $option, $default = false ) {
 	/**
 	 * Filter the value of an existing option.
 	 *
-	 * The dynamic portion of the hook name, $option, refers to the option name.
+	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
 	 * @since 1.5.0 As 'option_' . $setting
 	 * @since 3.0.0
@@ -141,7 +145,6 @@ function wp_protect_special_option( $option ) {
 /**
  * Print option value after sanitizing for forms.
  *
- * @uses attr Sanitizes value.
  * @since 1.5.0
  *
  * @param string $option Option name.
@@ -154,6 +157,8 @@ function form_option( $option ) {
  * Loads and caches all autoloaded options, if available or all options.
  *
  * @since 2.2.0
+ *
+ * @global wpdb $wpdb
  *
  * @return array List of all options.
  */
@@ -185,6 +190,8 @@ function wp_load_alloptions() {
  * Loads and caches certain often requested site options if is_multisite() and a persistent cache is not being used.
  *
  * @since 3.0.0
+ *
+ * @global wpdb $wpdb
  *
  * @param int $site_id Optional site ID for which to query the options. Defaults to the current site.
  */
@@ -218,17 +225,23 @@ function wp_load_core_site_options( $site_id = null ) {
  * it will be serialized before it is inserted into the database. Remember,
  * resources can not be serialized or added as an option.
  *
- * If the option does not exist, then the option will be added with the option
- * value, but you will not be able to set whether it is autoloaded. If you want
- * to set whether an option is autoloaded, then you need to use the add_option().
+ * If the option does not exist, then the option will be added with the option value,
+ * with an `$autoload` value of 'yes'.
  *
  * @since 1.0.0
+ * @since 4.2.0 The `$autoload` parameter was added.
  *
- * @param string $option Option name. Expected to not be SQL-escaped.
- * @param mixed $value Option value. Must be serializable if non-scalar. Expected to not be SQL-escaped.
+ * @global wpdb $wpdb
+ *
+ * @param string      $option   Option name. Expected to not be SQL-escaped.
+ * @param mixed       $value    Option value. Must be serializable if non-scalar. Expected to not be SQL-escaped.
+ * @param string|bool $autoload Optional. Whether to load the option when WordPress starts up. For existing options,
+ *                              `$autoload` can only be updated using `update_option()` if `$value` is also changed.
+ *                              Accepts 'yes'|true to enable or 'no'|false to disable. For non-existent options,
+ *                              the default value is 'yes'. Default null.
  * @return bool False if value was not updated and true if value was updated.
  */
-function update_option( $option, $value ) {
+function update_option( $option, $value, $autoload = null ) {
 	global $wpdb;
 
 	$option = trim($option);
@@ -246,7 +259,7 @@ function update_option( $option, $value ) {
 	/**
 	 * Filter a specific option before its value is (maybe) serialized and updated.
 	 *
-	 * The dynamic portion of the hook name, $option, refers to the option name.
+	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
 	 * @since 2.6.0
 	 *
@@ -270,8 +283,15 @@ function update_option( $option, $value ) {
 	if ( $value === $old_value )
 		return false;
 
-	if ( false === $old_value )
-		return add_option( $option, $value );
+	/** This filter is documented in wp-includes/option.php */
+	if ( apply_filters( 'default_option_' . $option, false ) === $old_value ) {
+		// Default setting for new options is 'yes'.
+		if ( null === $autoload ) {
+			$autoload = 'yes';
+		}
+
+		return add_option( $option, $value, '', $autoload );
+	}
 
 	$serialized_value = maybe_serialize( $value );
 
@@ -286,7 +306,15 @@ function update_option( $option, $value ) {
 	 */
 	do_action( 'update_option', $option, $old_value, $value );
 
-	$result = $wpdb->update( $wpdb->options, array( 'option_value' => $serialized_value ), array( 'option_name' => $option ) );
+	$update_args = array(
+		'option_value' => $serialized_value,
+	);
+
+	if ( null !== $autoload ) {
+		$update_args['autoload'] = ( 'no' === $autoload || false === $autoload ) ? 'no' : 'yes';
+	}
+
+	$result = $wpdb->update( $wpdb->options, $update_args, array( 'option_name' => $option ) );
 	if ( ! $result )
 		return false;
 
@@ -309,7 +337,7 @@ function update_option( $option, $value ) {
 	/**
 	 * Fires after the value of a specific option has been successfully updated.
 	 *
-	 * The dynamic portion of the hook name, $option, refers to the option name.
+	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
 	 * @since 2.0.1
 	 *
@@ -345,10 +373,13 @@ function update_option( $option, $value ) {
  *
  * @since 1.0.0
  *
- * @param string $option Name of option to add. Expected to not be SQL-escaped.
- * @param mixed $value Optional. Option value. Must be serializable if non-scalar. Expected to not be SQL-escaped.
- * @param mixed $deprecated Optional. Description. Not used anymore.
- * @param bool $autoload Optional. Default is enabled. Whether to load the option when WordPress starts up.
+ * @global wpdb $wpdb
+ *
+ * @param string         $option      Name of option to add. Expected to not be SQL-escaped.
+ * @param mixed          $value       Optional. Option value. Must be serializable if non-scalar. Expected to not be SQL-escaped.
+ * @param string         $deprecated  Optional. Description. Not used anymore.
+ * @param string|bool    $autoload    Optional. Whether to load the option when WordPress starts up.
+ *                                    Default is enabled. Accepts 'no' to disable for legacy reasons.
  * @return bool False if option was not added and true if option was added.
  */
 function add_option( $option, $value = '', $deprecated = '', $autoload = 'yes' ) {
@@ -371,11 +402,12 @@ function add_option( $option, $value = '', $deprecated = '', $autoload = 'yes' )
 	// Make sure the option doesn't already exist. We can check the 'notoptions' cache before we ask for a db query
 	$notoptions = wp_cache_get( 'notoptions', 'options' );
 	if ( !is_array( $notoptions ) || !isset( $notoptions[$option] ) )
-		if ( false !== get_option( $option ) )
+		/** This filter is documented in wp-includes/option.php */
+		if ( apply_filters( 'default_option_' . $option, false ) !== get_option( $option ) )
 			return false;
 
 	$serialized_value = maybe_serialize( $value );
-	$autoload = ( 'no' === $autoload ) ? 'no' : 'yes';
+	$autoload = ( 'no' === $autoload || false === $autoload ) ? 'no' : 'yes';
 
 	/**
 	 * Fires before an option is added.
@@ -411,7 +443,7 @@ function add_option( $option, $value = '', $deprecated = '', $autoload = 'yes' )
 	/**
 	 * Fires after a specific option has been added.
 	 *
-	 * The dynamic portion of the hook name, $option, refers to the option name.
+	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
 	 * @since 2.5.0 As "add_option_{$name}"
 	 * @since 3.0.0
@@ -437,6 +469,8 @@ function add_option( $option, $value = '', $deprecated = '', $autoload = 'yes' )
  * Removes option by name. Prevents removal of protected WordPress options.
  *
  * @since 1.2.0
+ *
+ * @global wpdb $wpdb
  *
  * @param string $option Name of option to remove. Expected to not be SQL-escaped.
  * @return bool True, if option is successfully deleted. False on failure.
@@ -481,7 +515,7 @@ function delete_option( $option ) {
 		/**
 		 * Fires after a specific option has been deleted.
 		 *
-		 * The dynamic portion of the hook name, $option, refers to the option name.
+		 * The dynamic portion of the hook name, `$option`, refers to the option name.
 		 *
 		 * @since 3.0.0
 		 *
@@ -515,7 +549,7 @@ function delete_transient( $transient ) {
 	/**
 	 * Fires immediately before a specific transient is deleted.
 	 *
-	 * The dynamic portion of the hook name, $transient, refers to the transient name.
+	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
 	 * @since 3.0.0
 	 *
@@ -564,7 +598,7 @@ function get_transient( $transient ) {
  	/**
 	 * Filter the value of an existing transient.
 	 *
-	 * The dynamic portion of the hook name, $transient, refers to the transient name.
+	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
 	 * Passing a truthy value to the filter will effectively short-circuit retrieval
 	 * of the transient, returning the passed value instead.
@@ -588,7 +622,8 @@ function get_transient( $transient ) {
 			$alloptions = wp_load_alloptions();
 			if ( !isset( $alloptions[$transient_option] ) ) {
 				$transient_timeout = '_transient_timeout_' . $transient;
-				if ( get_option( $transient_timeout ) < time() ) {
+				$timeout = get_option( $transient_timeout );
+				if ( false !== $timeout && $timeout < time() ) {
 					delete_option( $transient_option  );
 					delete_option( $transient_timeout );
 					$value = false;
@@ -603,7 +638,7 @@ function get_transient( $transient ) {
 	/**
 	 * Filter an existing transient's value.
 	 *
-	 * The dynamic portion of the hook name, $transient, refers to the transient name.
+	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
 	 * @since 2.8.0
 	 *
@@ -629,18 +664,20 @@ function get_transient( $transient ) {
  */
 function set_transient( $transient, $value, $expiration = 0 ) {
 
+	$expiration = (int) $expiration;
+
 	/**
 	 * Filter a specific transient before its value is set.
 	 *
-	 * The dynamic portion of the hook name, $transient, refers to the transient name.
+	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
 	 * @since 3.0.0
+	 * @since 4.2.0 Added `$expiration` parameter.
 	 *
-	 * @param mixed $value New value of transient.
+	 * @param mixed $value      New value of transient.
+	 * @param int   $expiration Time until expiration in seconds.
 	 */
-	$value = apply_filters( 'pre_set_transient_' . $transient, $value );
-
-	$expiration = (int) $expiration;
+	$value = apply_filters( 'pre_set_transient_' . $transient, $value, $expiration );
 
 	if ( wp_using_ext_object_cache() ) {
 		$result = wp_cache_set( $transient, $value, 'transient', $expiration );
@@ -679,7 +716,7 @@ function set_transient( $transient, $value, $expiration = 0 ) {
 		/**
 		 * Fires after the value for a specific transient has been set.
 		 *
-		 * The dynamic portion of the hook name, $transient, refers to the transient name.
+		 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 		 *
 		 * @since 3.0.0
 		 *
@@ -757,7 +794,7 @@ function wp_user_settings() {
  *
  * @since 2.7.0
  *
- * @param string $name The name of the setting.
+ * @param string $name    The name of the setting.
  * @param string $default Optional default value to return when $name is not set.
  * @return mixed the last saved user setting or the default value/false if it doesn't exist.
  */
@@ -775,12 +812,11 @@ function get_user_setting( $name, $default = false ) {
  *
  * @since 2.8.0
  *
- * @param string $name The name of the setting.
+ * @param string $name  The name of the setting.
  * @param string $value The value for the setting.
- * @return bool true if set successfully/false if not.
+ * @return bool|void true if set successfully/false if not.
  */
 function set_user_setting( $name, $value ) {
-
 	if ( headers_sent() ) {
 		return false;
 	}
@@ -799,11 +835,10 @@ function set_user_setting( $name, $value ) {
  *
  * @since 2.7.0
  *
- * @param mixed $names The name or array of names of the setting to be deleted.
- * @return bool true if deleted successfully/false if not.
+ * @param string $names The name or array of names of the setting to be deleted.
+ * @return bool|void true if deleted successfully/false if not.
  */
 function delete_user_setting( $names ) {
-
 	if ( headers_sent() ) {
 		return false;
 	}
@@ -830,6 +865,8 @@ function delete_user_setting( $names ) {
  * Retrieve all user interface settings.
  *
  * @since 2.7.0
+ *
+ * @global array $_updated_user_settings
  *
  * @return array the last saved user settings or empty array.
  */
@@ -869,8 +906,10 @@ function get_all_user_settings() {
  *
  * @since 2.8.0
  *
+ * @global array $_updated_user_settings
+ *
  * @param array $user_settings
- * @return bool
+ * @return bool|void
  */
 function wp_set_all_user_settings( $user_settings ) {
 	global $_updated_user_settings;
@@ -923,9 +962,11 @@ function delete_all_user_settings() {
  *
  * @see get_option()
  *
- * @param string $option Name of option to retrieve. Expected to not be SQL-escaped.
- * @param mixed $default Optional value to return if option doesn't exist. Default false.
- * @param bool $use_cache Whether to use cache. Multisite only. Default true.
+ * @global wpdb $wpdb
+ *
+ * @param string $option    Name of option to retrieve. Expected to not be SQL-escaped.
+ * @param mixed  $default   Optional value to return if option doesn't exist. Default false.
+ * @param bool   $use_cache Whether to use cache. Multisite only. Default true.
  * @return mixed Value set for the option.
  */
 function get_site_option( $option, $default = false, $use_cache = true ) {
@@ -934,7 +975,7 @@ function get_site_option( $option, $default = false, $use_cache = true ) {
 	/**
 	 * Filter an existing site option before it is retrieved.
 	 *
-	 * The dynamic portion of the hook name, $option, refers to the option name.
+	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
 	 * Passing a truthy value to the filter will effectively short-circuit retrieval,
 	 * returning the passed value instead.
@@ -958,7 +999,7 @@ function get_site_option( $option, $default = false, $use_cache = true ) {
 		/**
 		 * Filter a specific default site option.
 		 *
-		 * The dynamic portion of the hook name, $option, refers to the option name.
+		 * The dynamic portion of the hook name, `$option`, refers to the option name.
 		 *
 		 * @since 3.4.0
 		 *
@@ -987,6 +1028,9 @@ function get_site_option( $option, $default = false, $use_cache = true ) {
 				$value = maybe_unserialize( $value );
 				wp_cache_set( $cache_key, $value, 'site-options' );
 			} else {
+				if ( ! is_array( $notoptions ) ) {
+					 $notoptions = array();
+				}
 				$notoptions[$option] = true;
 				wp_cache_set( $notoptions_key, $notoptions, 'site-options' );
 
@@ -999,7 +1043,7 @@ function get_site_option( $option, $default = false, $use_cache = true ) {
 	/**
 	 * Filter the value of an existing site option.
 	 *
-	 * The dynamic portion of the hook name, $option, refers to the option name.
+	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
 	 * @since 2.9.0 As 'site_option_' . $key
 	 * @since 3.0.0
@@ -1018,8 +1062,10 @@ function get_site_option( $option, $default = false, $use_cache = true ) {
  *
  * @see add_option()
  *
+ * @global wpdb $wpdb
+ *
  * @param string $option Name of option to add. Expected to not be SQL-escaped.
- * @param mixed $value Optional. Option value, can be anything. Expected to not be SQL-escaped.
+ * @param mixed  $value  Optional. Option value, can be anything. Expected to not be SQL-escaped.
  * @return bool False if option was not added and true if option was added.
  */
 function add_site_option( $option, $value ) {
@@ -1030,7 +1076,7 @@ function add_site_option( $option, $value ) {
 	/**
 	 * Filter the value of a specific site option before it is added.
 	 *
-	 * The dynamic portion of the hook name, $option, refers to the option name.
+	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
 	 * @since 2.9.0 As 'pre_add_site_option_' . $key
 	 * @since 3.0.0
@@ -1075,7 +1121,7 @@ function add_site_option( $option, $value ) {
 		/**
 		 * Fires after a specific site option has been successfully added.
 		 *
-		 * The dynamic portion of the hook name, $option, refers to the option name.
+		 * The dynamic portion of the hook name, `$option`, refers to the option name.
 		 *
 		 * @since 2.9.0 As "add_site_option_{$key}"
 		 * @since 3.0.0
@@ -1107,6 +1153,8 @@ function add_site_option( $option, $value ) {
  *
  * @see delete_option()
  *
+ * @global wpdb $wpdb
+ *
  * @param string $option Name of option to remove. Expected to not be SQL-escaped.
  * @return bool True, if succeed. False, if failure.
  */
@@ -1118,7 +1166,7 @@ function delete_site_option( $option ) {
 	/**
 	 * Fires immediately before a specific site option is deleted.
 	 *
-	 * The dynamic portion of the hook name, $option, refers to the option name.
+	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
 	 * @since 3.0.0
 	 */
@@ -1141,7 +1189,7 @@ function delete_site_option( $option ) {
 		/**
 		 * Fires after a specific site option has been deleted.
 		 *
-		 * The dynamic portion of the hook name, $option, refers to the option name.
+		 * The dynamic portion of the hook name, `$option`, refers to the option name.
 		 *
 		 * @since 2.9.0 As "delete_site_option_{$key}"
 		 * @since 3.0.0
@@ -1171,8 +1219,10 @@ function delete_site_option( $option ) {
  *
  * @see update_option()
  *
+ * @global wpdb $wpdb
+ *
  * @param string $option Name of option. Expected to not be SQL-escaped.
- * @param mixed $value Option value. Expected to not be SQL-escaped.
+ * @param mixed  $value  Option value. Expected to not be SQL-escaped.
  * @return bool False if value was not updated and true if value was updated.
  */
 function update_site_option( $option, $value ) {
@@ -1185,7 +1235,7 @@ function update_site_option( $option, $value ) {
 	/**
 	 * Filter a specific site option before its value is updated.
 	 *
-	 * The dynamic portion of the hook name, $option, refers to the option name.
+	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
 	 * @since 2.9.0 As 'pre_update_site_option_' . $key
 	 * @since 3.0.0
@@ -1227,7 +1277,7 @@ function update_site_option( $option, $value ) {
 		/**
 		 * Fires after the value of a specific site option has been successfully updated.
 		 *
-		 * The dynamic portion of the hook name, $option, refers to the option name.
+		 * The dynamic portion of the hook name, `$option`, refers to the option name.
 		 *
 		 * @since 2.9.0 As "update_site_option_{$key}"
 		 * @since 3.0.0
@@ -1267,7 +1317,7 @@ function delete_site_transient( $transient ) {
 	/**
 	 * Fires immediately before a specific site transient is deleted.
 	 *
-	 * The dynamic portion of the hook name, $transient, refers to the transient name.
+	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
 	 * @since 3.0.0
 	 *
@@ -1317,7 +1367,7 @@ function get_site_transient( $transient ) {
 	/**
 	 * Filter the value of an existing site transient.
 	 *
-	 * The dynamic portion of the hook name, $transient, refers to the transient name.
+	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
 	 * Passing a truthy value to the filter will effectively short-circuit retrieval,
 	 * returning the passed value instead.
@@ -1356,7 +1406,7 @@ function get_site_transient( $transient ) {
 	/**
 	 * Filter the value of an existing site transient.
 	 *
-	 * The dynamic portion of the hook name, $transient, refers to the transient name.
+	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
 	 * @since 2.9.0
 	 *
@@ -1386,7 +1436,7 @@ function set_site_transient( $transient, $value, $expiration = 0 ) {
 	/**
 	 * Filter the value of a specific site transient before it is set.
 	 *
-	 * The dynamic portion of the hook name, $transient, refers to the transient name.
+	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
 	 * @since 3.0.0
 	 *
@@ -1416,7 +1466,7 @@ function set_site_transient( $transient, $value, $expiration = 0 ) {
 		/**
 		 * Fires after the value for a specific site transient has been set.
 		 *
-		 * The dynamic portion of the hook name, $transient, refers to the transient name.
+		 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 		 *
 		 * @since 3.0.0
 		 *
