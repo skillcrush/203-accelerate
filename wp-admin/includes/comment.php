@@ -10,7 +10,8 @@
  * Determine if a comment exists based on author and date.
  *
  * @since 2.0.0
- * @uses $wpdb
+ *
+ * @global wpdb $wpdb WordPress database abstraction object.
  *
  * @param string $comment_author Author of the comment
  * @param string $comment_date Date of the comment
@@ -19,11 +20,11 @@
 function comment_exists($comment_author, $comment_date) {
 	global $wpdb;
 
-	$comment_author = stripslashes($comment_author);
-	$comment_date = stripslashes($comment_date);
-
 	return $wpdb->get_var( $wpdb->prepare("SELECT comment_post_ID FROM $wpdb->comments
-			WHERE comment_author = %s AND comment_date = %s", $comment_author, $comment_date) );
+			WHERE comment_author = %s AND comment_date = %s",
+			stripslashes( $comment_author ),
+			stripslashes( $comment_date )
+	) );
 }
 
 /**
@@ -32,7 +33,6 @@ function comment_exists($comment_author, $comment_date) {
  * @since 2.0.0
  */
 function edit_comment() {
-
 	if ( ! current_user_can( 'edit_comment', (int) $_POST['comment_ID'] ) )
 		wp_die ( __( 'You are not allowed to edit comments on this post.' ) );
 
@@ -79,7 +79,7 @@ function edit_comment() {
  * @since 2.0.0
  *
  * @param int $id ID of comment to retrieve.
- * @return bool|object Comment if found. False on failure.
+ * @return object|false Comment if found. False on failure.
  */
 function get_comment_to_edit( $id ) {
 	if ( !$comment = get_comment($id) )
@@ -110,7 +110,8 @@ function get_comment_to_edit( $id ) {
  * Get the number of pending comments on a post or posts
  *
  * @since 2.3.0
- * @uses $wpdb
+ *
+ * @global wpdb $wpdb WordPress database abstraction object.
  *
  * @param int|array $post_id Either a single Post ID or an array of Post IDs
  * @return int|array Either a single Posts pending comments as an int or an array of ints keyed on the Post IDs
@@ -154,7 +155,8 @@ function get_pending_comments_num( $post_id ) {
  * Add avatars to relevant places in admin, or try to.
  *
  * @since 2.5.0
- * @uses $comment
+ *
+ * @global object $comment
  *
  * @param string $name User name.
  * @return string Avatar with Admin name.
@@ -165,6 +167,9 @@ function floated_admin_avatar( $name ) {
 	return "$avatar $name";
 }
 
+/**
+ * @since 2.7.0
+ */
 function enqueue_comment_hotkeys_js() {
 	if ( 'true' == get_user_option( 'comment_shortcuts' ) )
 		wp_enqueue_script( 'jquery-table-hotkeys' );
