@@ -25,9 +25,6 @@
  * @since Accelerate Marketing 1.0
  */
 
-// register_nav_menu('top-nav', 'Top Nav');
-// register_nav_menu('social-media', 'Social Media Nav');
-
 /**
  * Register menus.
  */
