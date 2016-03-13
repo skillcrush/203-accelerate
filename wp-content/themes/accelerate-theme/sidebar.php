@@ -7,10 +7,11 @@
  * @since Twenty Fourteen 1.0
  */
 ?>
-			<aside class="sidebar">
-	<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+
+<aside class="sidebar">
+	<?php if ( is_active_sidebar( 'sidebar-1' ) ) {?>
 		<?php dynamic_sidebar( 'sidebar-1' ); ?>	
-			<?php endif; ?>
+	<?php }	else { ?>
 
 		<div class="post-author">
 					<div class="avatar"><img src="upload/Emily2.jpg" alt=""></div>
@@ -54,5 +55,6 @@
 						<li><a href=""><img src="upload/Event-3.jpg" alt=""></a></li>
 					</ul>
 				</div>
+		<?php } ?>
 	
 </aside>
