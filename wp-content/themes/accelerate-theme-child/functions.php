@@ -25,9 +25,6 @@
  * @since Accelerate Marketing 1.0
  */
 
-register_nav_menu('top-nav', 'Top Nav');
-register_nav_menu('social-media', 'Social Media Nav');
-
 // Custom post types function
 function create_custom_post_types() {
 // create a case study custom post type
