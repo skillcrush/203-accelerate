@@ -8,7 +8,7 @@
  * For maximum compatibility with different methods of posting users
  * will designate a featured post tag to associate posts with. Since
  * this tag now has special meaning beyond that of a normal tags, users
- * will have the ability to hide it from the front-end of their site.
+ * will have the ability to hide it from the front end of their site.
  */
 class Featured_Content {
 
@@ -95,9 +95,9 @@ class Featured_Content {
 	}
 
 	/**
-	 * Hide "featured" tag from the front-end.
+	 * Hide "featured" tag from the front end.
 	 *
-	 * Has to run on wp_loaded so that the preview filters of the customizer
+	 * Has to run on wp_loaded so that the preview filters of the Customizer
 	 * have a chance to alter the value.
 	 *
 	 * @static
@@ -235,10 +235,8 @@ class Featured_Content {
 			return;
 		}
 
-		$page_on_front = get_option( 'page_on_front' );
-
 		// Bail if the blog page is not the front page.
-		if ( ! empty( $page_on_front ) ) {
+		if ( 'posts' !== get_option( 'show_on_front' ) ) {
 			return;
 		}
 
@@ -290,7 +288,7 @@ class Featured_Content {
 	}
 
 	/**
-	 * Hide featured tag from displaying when global terms are queried from the front-end.
+	 * Hide featured tag from displaying when global terms are queried from the front end.
 	 *
 	 * Hooks into the "get_terms" filter.
 	 *
@@ -306,7 +304,7 @@ class Featured_Content {
 	 */
 	public static function hide_featured_term( $terms, $taxonomies, $args ) {
 
-		// This filter is only appropriate on the front-end.
+		// This filter is only appropriate on the front end.
 		if ( is_admin() ) {
 			return $terms;
 		}
@@ -327,7 +325,7 @@ class Featured_Content {
 		}
 
 		$settings = self::get_setting();
-		foreach( $terms as $order => $term ) {
+		foreach ( $terms as $order => $term ) {
 			if ( ( $settings['tag-id'] === $term->term_id || $settings['tag-name'] === $term->name ) && 'post_tag' === $term->taxonomy ) {
 				unset( $terms[ $order ] );
 			}
@@ -338,7 +336,7 @@ class Featured_Content {
 
 	/**
 	 * Hide featured tag from display when terms associated with a post object
-	 * are queried from the front-end.
+	 * are queried from the front end.
 	 *
 	 * Hooks into the "get_the_terms" filter.
 	 *
@@ -355,7 +353,7 @@ class Featured_Content {
 	 */
 	public static function hide_the_featured_term( $terms, $id, $taxonomy ) {
 
-		// This filter is only appropriate on the front-end.
+		// This filter is only appropriate on the front end.
 		if ( is_admin() ) {
 			return $terms;
 		}
@@ -371,7 +369,7 @@ class Featured_Content {
 		}
 
 		$settings = self::get_setting();
-		foreach( $terms as $order => $term ) {
+		foreach ( $terms as $order => $term ) {
 			if ( ( $settings['tag-id'] === $term->term_id || $settings['tag-name'] === $term->name ) && 'post_tag' === $term->taxonomy ) {
 				unset( $terms[ $term->term_id ] );
 			}
@@ -398,7 +396,7 @@ class Featured_Content {
 	 * @access public
 	 * @since Twenty Fourteen 1.0
 	 *
-	 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+	 * @param WP_Customize_Manager $wp_customize Customizer object.
 	 */
 	public static function customize_register( $wp_customize ) {
 		$wp_customize->add_section( 'featured_content', array(

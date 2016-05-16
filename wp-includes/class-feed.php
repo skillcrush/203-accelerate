@@ -1,6 +1,6 @@
 <?php
 
-if ( !class_exists('SimplePie') )
+if ( ! class_exists( 'SimplePie', false ) )
 	require_once( ABSPATH . WPINC . '/class-simplepie.php' );
 
 class WP_Feed_Cache extends SimplePie_Cache {
@@ -9,6 +9,11 @@ class WP_Feed_Cache extends SimplePie_Cache {
 	 *
 	 * @static
 	 * @access public
+	 *
+	 * @param string $location  URL location (scheme is used to determine handler).
+	 * @param string $filename  Unique identifier for cache object.
+	 * @param string $extension 'spi' or 'spc'.
+	 * @return WP_Feed_Cache_Transient Feed cache handler object that uses transients.
 	 */
 	public function create($location, $filename, $extension) {
 		return new WP_Feed_Cache_Transient($location, $filename, $extension);
@@ -20,6 +25,13 @@ class WP_Feed_Cache_Transient {
 	public $mod_name;
 	public $lifetime = 43200; //Default lifetime in cache of 12 hours
 
+	/**
+	 * Class instantiator.
+	 * 
+	 * @param string $location  URL location (scheme is used to determine handler).
+	 * @param string $filename  Unique identifier for cache object.
+	 * @param string $extension 'spi' or 'spc'.
+	 */
 	public function __construct($location, $filename, $extension) {
 		$this->name = 'feed_' . $filename;
 		$this->mod_name = 'feed_mod_' . $filename;
@@ -36,27 +48,46 @@ class WP_Feed_Cache_Transient {
 		$this->lifetime = apply_filters( 'wp_feed_cache_transient_lifetime', $lifetime, $filename);
 	}
 
+	/**
+	 * @access public
+	 *
+	 * @param SimplePie $data Data to save.
+	 * @return true Always true.
+	 */
 	public function save($data) {
-		if ( is_a($data, 'SimplePie') )
+		if ( $data instanceof SimplePie ) {
 			$data = $data->data;
+		}
 
 		set_transient($this->name, $data, $this->lifetime);
 		set_transient($this->mod_name, time(), $this->lifetime);
 		return true;
 	}
 
+	/**
+	 * @access public
+	 */
 	public function load() {
 		return get_transient($this->name);
 	}
 
+	/**
+	 * @access public
+	 */
 	public function mtime() {
 		return get_transient($this->mod_name);
 	}
 
+	/**
+	 * @access public
+	 */
 	public function touch() {
 		return set_transient($this->mod_name, time(), $this->lifetime);
 	}
 
+	/**
+	 * @access public
+	 */
 	public function unlink() {
 		delete_transient($this->name);
 		delete_transient($this->mod_name);
