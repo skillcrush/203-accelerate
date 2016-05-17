@@ -1,14 +1,14 @@
-# Copyright (C) 2014 the WordPress team
+# Copyright (C) 2016 the WordPress team
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Twenty Twelve 1.5\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tags/twentytwelve\n"
-"POT-Creation-Date: 2014-09-03 00:45:46+00:00\n"
+"Project-Id-Version: Twenty Twelve 2.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/twentytwelve\n"
+"POT-Creation-Date: 2016-04-05 09:48:39+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
@@ -139,10 +139,10 @@ msgstr ""
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#. #-#-#-#-#  twentytwelve.pot (Twenty Twelve 1.5)  #-#-#-#-#
+#. #-#-#-#-#  twentytwelve.pot (Twenty Twelve 2.0)  #-#-#-#-#
 #. Author URI of the plugin/theme
 #: footer.php:16
-msgid "http://wordpress.org/"
+msgid "https://wordpress.org/"
 msgstr ""
 
 #: footer.php:16
@@ -158,47 +158,46 @@ msgid "Primary Menu"
 msgstr ""
 
 #. translators: If there are characters in your language that are not supported
-#. 	 * by Open Sans, translate this to 'off'. Do not translate into your own
+#. by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:101
+#: functions.php:104
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr ""
 
 #. translators: To add an additional Open Sans character subset specific to
-#. your language,
-#. 		 * translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not translate
-#. into your own language.
-#: functions.php:107
+#. your language, translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not
+#. translate into your own language.
+#: functions.php:110
 msgctxt "Open Sans font: add new subset (greek, cyrillic, vietnamese)"
 msgid "no-subset"
 msgstr ""
 
-#: functions.php:213
+#: functions.php:215
 msgid "Page %s"
 msgstr ""
 
-#: functions.php:242
+#: functions.php:244
 msgid "Main Sidebar"
 msgstr ""
 
-#: functions.php:244
+#: functions.php:246
 msgid ""
 "Appears on posts and pages except the optional Front Page template, which "
 "has its own widgets"
 msgstr ""
 
-#: functions.php:252
+#: functions.php:254
 msgid "First Front Page Widget Area"
 msgstr ""
 
-#: functions.php:254 functions.php:264
+#: functions.php:256 functions.php:266
 msgid ""
 "Appears when using the optional Front Page template with a page set as "
 "Static Front Page"
 msgstr ""
 
-#: functions.php:262
+#: functions.php:264
 msgid "Second Front Page Widget Area"
 msgstr ""
 
@@ -328,7 +327,7 @@ msgid "Twenty Twelve"
 msgstr ""
 
 #. Theme URI of the plugin/theme
-msgid "http://wordpress.org/themes/twentytwelve"
+msgid "https://wordpress.org/themes/twentytwelve/"
 msgstr ""
 
 #. Description of the plugin/theme
