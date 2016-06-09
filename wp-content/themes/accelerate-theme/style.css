@@ -1,9 +1,7 @@
 /*
 Theme Name: Accelerate Marketing
-Theme URI: http://wordpress.org/themes/twentyfourteen
 Author: the Skillcrush team
 Author URI: http://skillcrush.com/
-Description: In 2014, our default theme lets you create a responsive magazine website with a sleek, modern design. Feature your favorite homepage content in either a grid or a slider. Use the three widget areas to customize your website, and change your content's layout with a full-width page template and a contributor page to show off your authors. Creating a magazine website with WordPress has never been easier.
 Version: 1.0
 
 */
@@ -432,6 +430,7 @@ hr {
 	text-shadow: none;
 }
 
+
 /**
  * 2.0 Global Styles
  *
@@ -443,6 +442,16 @@ hr {
  *
  * -----------------------------------------------------------------------------
  */
+
+ .clearfix:before,
+ .clearfix:after {
+     content: " ";
+     display: table;
+ }
+
+ .clearfix:after {
+     clear: both;
+ }
 
 #page {
 	padding:0;
@@ -528,61 +537,6 @@ a:hover {
 	margin: 0.7em 0;
 }
 
-.social-btns {
-	margin: 35px 0;
-}
-.social-btns .soc-icon {
-	background: url(../img/soc-sprite.png) no-repeat;
-	display: inline-block;
-	height: 22px;
-	width: 22px;
-	margin-left: 2px;
-    -webkit-transition: 500ms ease-in-out;
-    -moz-transition: 500ms ease-in-out;
-    -o-transition: 500ms ease-in-out;
-    transition: 500ms ease-in-out;
-}
-.social-btns .soc-icon.tw {
-	background-position: 0 0;
-}
-.social-btns .soc-icon.fb {
-	background-position: -28px 0;
-}
-.social-btns .soc-icon.ln {
-	background-position: -56px 0;
-}
-.social-btns .soc-icon.db {
-	background-position: -83px 0;
-	width: 23px;
-}
-.social-btns .soc-icon:hover {
-	-moz-transform: scale(1) rotate(360deg);
-	-webkit-transform: scale(1) rotate(360deg);
-	-o-transform: scale(1) rotate(360deg);
-	-ms-transform: scale(1) rotate(360deg);
-	transform: scale(1) rotate(360deg);
-}
-
-.btn {
-	background: #45ac9d;
-	color: #fff;
-	font: bold 1.17em/2.77 'Montserrat', 'OpenSans', Arial, sans-serif;
-	display: inline-block;
-	height: 55px;
-	min-width: 250px;
-	padding: 0 20px;
-	text-align: center;
-	text-decoration: none;
-	-webkit-transition: background 500ms ease;
-	-moz-transition: background 500ms ease;
-	-ms-transition: background 500ms ease;
-	-o-transition: background 500ms ease;
-	transition: background 500ms ease;
-}
-.btn:hover {
-	background: #358579;
-}
-
 .main-content {
     float: left;
     padding: 55px 47px 0 0;
@@ -631,25 +585,6 @@ aside.sidebar {
 }
 .top-nav-link:hover {
 	border-bottom: 1px solid;
-}
-
-/* LANDING PAGE */
-.landing-page {
-	padding-top: 65px;
-	overflow: hidden;
-}
-.author-img {
-	float: left;
-	width: 392px;
-	margin: -8px 30px 0;
-}
-.author-intro {
-	padding-top: 35px;
-	margin-left: 495px;
-	background: #fff;
-}
-.author-intro .btn {
-	margin-top: 75px;
 }
 
 /* BLOG PAGE */
@@ -839,7 +774,7 @@ input {
 	height: 37px;
 	line-height: 35px;
 	border: 1px solid #BFBFBF;
-	background: #45ac9d url(../img/search-arrow.png) no-repeat center;
+	background: #45ac9d url(./img/search-arrow.png) no-repeat center;
 	color: #fff;
 	vertical-align: middle;
 	width: 33px;
@@ -865,15 +800,13 @@ input::-webkit-input-placeholder {
 
 .navigation {
 	background: #fff;
-	border: solid #bfbfbf;
-	border-width: 1px 0;
-	clear: both;
-	font: 0.8em/4.08 'OpenSans', Arial, sans-serif;
-	overflow: hidden;
-	position: relative;
-	z-index: 1;
-	margin-bottom: 40px;
-	text-align: center;
+  border-top: dotted #bfbfbf;
+  border-width: 1px 0;
+  clear: both;
+  font: 0.8em/4.08 'OpenSans', Arial, sans-serif;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
 }
 .navigation a {
 	color: #150300;
@@ -920,41 +853,33 @@ input::-webkit-input-placeholder {
 	height: 49px;
 	text-transform: uppercase;
 }
-.comments-area .comments-title .add-comment {
-	text-transform: none;
-	float: right;
-	cursor: pointer;
-	text-decoration: none;
-	color: inherit;
-	font-size: 0.95em;
-}
 .comments-area .comment-reply-title {
 	color: #45ac9d;
 	font: bold 1.176em 'Montserrat', 'OpenSans', Arial, sans-serif;
 	text-transform: uppercase;
 	margin: 2em 0 1em;
 }
-.default-form {
+.comment-form-comment {
 	overflow: hidden;
 }
-.default-form label {
+.comment-form  label {
 	display: block;
 	font: 600 0.8em 'OpenSans', Arial, sans-serif;
 	margin: 10px 0;
 }
-.default-form input {
+.comment-form-comment  input {
 	height: 39px;
 	width: 296px;
 }
-.default-form textarea {
+.comment-form-comment textarea {
 	height: 180px;
 	width: 100%;
 	resize: none;
 	font: 16px 'OpenSans', Arial, sans-serif;
 	padding: 5px 10px
 }
-.form-author,
-.form-email {
+.comment-form-author,
+.comment-form-email {
 	width: 50%;
 	float: left;
 }
@@ -962,7 +887,7 @@ input::-webkit-input-placeholder {
 	clear: both;
 	padding-top: 22px;
 }
-.default-form .submit {
+.comment-form .form-submit input[type="submit"]  {
 	background: #45ac9d;
 	width: 206px;
 	height: 55px;
@@ -972,13 +897,10 @@ input::-webkit-input-placeholder {
 	float: right;
 	border: 0;
 }
-.form-email {
-	padding-left: 10px;
-}
 .comment-list {
 	margin-bottom: 50px;
 }
-.comment {
+.comment-list .comment {
 	font: 0.8em/2.08em 'OpenSans', Arial, sans-serif;
 	border-bottom: 1px solid #BFBFBF;
 	padding-bottom: 23px;
@@ -1004,155 +926,6 @@ input::-webkit-input-placeholder {
 	font-weight: 600;
 }
 
-.top-head-title {
-	font: bold 1.47em/61px 'Montserrat', sans-serif;
-	letter-spacing: -0.034em;
-	border-bottom: 1px solid #BFBFBF;
-}
-.top-head-title a {
-	color: #45ac9d;
-	text-decoration: none;
-}
-.top-head-title a:hover {
-	text-decoration: underline;
-}
-
-
-/* SECOND LANDING STYLE */
-.landing-bg {
-	background: url(../img/landbg.jpg) no-repeat center 0;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	min-height: 100%;
-}
-.landing-bg .author-intro {
-	margin: -18px 0 40px 453px;
-	padding: 17px 20px 30px 42px;
-}
-.landing-bg  .author-intro .btn {
-	width: 100%;
-	margin-left: -11px;
-	margin-top: 0;
-}
-
-/* WORK PAGE */
-.projects-list {
-	margin-bottom: 105px;
-}
-.projects-list .project-item {
-	margin-top: 65px;
-	overflow: hidden;
-}
-.projects-list .img {
-	float: right;
-}
-.projects-list img {
-	display: block;
-	border: 1px solid #dfdddd;
-	max-width: 516px;
-}
-.projects-list img + img {
-	margin-top: 80px;
-}
-.projects-list .content {
-	margin-right: 580px; 
-}
-.projects-list .title {
-	font-size: 1.47em;
-	line-height: 1.4em;
-	margin: 25px 0 8px;
-}
-.projects-list .title a {
-	border: none;
-}
-.projects-list .skills {
-	color: #878787;
-	font-size: 0.83em;
-	margin-bottom: 8px;
-}
-.projects-list .text {
-	margin-top: 15px;
-}
-.projects-list .link {
-	color: inherit;
-	border: 0;
-	font-size: 0.88em;
-	font-weight: bold;
-	margin-top: 35px;
-}
-.projects-list .link:hover {
-	color: #45ac9d;
-}
-.projects-list .client {
-	font-size: 0.83em;
-	margin-bottom: 25px;
-}
-
-.email-footer {
-	border-top: 1px solid #bfbfbf;
-	font-size: 1.1em;
-	/*margin: 60px auto 0;*/
-	padding-top: 60px;
-	text-align: center;
-}
-.email-footer a {
-	color: inherit;
-	font-weight: bold;
-	text-decoration: none;
-}
-.email-footer a:hover {
-	color: #45ac9d;
-}
-.email-footer .social-btns {
-	margin: 55px 0 0;
-	overflow: hidden;
-}
-.navigation + .email-footer {
-	border-top: 0;
-}
-
-/* CONTACT PAGE */
-.contacts-form-wrap {
-	width: 615px;
-	margin: 50px auto 0;
-	padding-bottom: 90px;
-}
-.contacts-form-wrap .title {
-	font: bold 1.47em/1.4 'Montserrat', sans-serif;
-	letter-spacing: -0.034em;
-}
-.contacts-form-wrap form  {
-	margin-top: 30px;
-}
-.contacts-form-wrap form .submit {
-	margin-top: 40px;
-}
-input.warning, 
-textarea.warning,
-.warning input,
-.warning textarea {
-	border-color: #e4644b;
-}
-.warning-text {
-	color: #e4644b;
-	font-size: 0.76em;
-}
-
-/* CONFIRMATION */
-.confirmation-wrap {
-	text-align: center;
-	padding: 50px 0;
-}
-.confirmation-wrap .title {
-	color: #45ac9d;
-	font: bold 2.06em/1.3 'Montserrat', sans-serif;
-	letter-spacing: -0.034em;
-}
-.confirmation-wrap p {
-	font-size: 1.176em;
-}
 section .navigation {
 	border-bottom: 0
 }

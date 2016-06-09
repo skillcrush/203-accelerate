@@ -25,9 +25,6 @@
  * @since Accelerate Marketing 1.0
  */
 
-// register_nav_menu('top-nav', 'Top Nav');
-// register_nav_menu('social-media', 'Social Media Nav');
-
 /**
  * Register menus.
  */
@@ -53,4 +50,20 @@ function accelerate_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 }
+
 add_action( 'widgets_init', 'accelerate_widgets_init' );
+
+// defines custom markup for post comments
+function accelerate_comments($comment, $args, $depth) {
+	$comment  = '<li class="comment">';
+	$comment .=	'<header class="comment-head">';
+	$comment .= '<span class="comment-author">' . get_comment_author() . '</span>';
+	$comment .= '<span class="comment-meta">' . get_comment_date('m/d/Y') . '&emsp;|&emsp;' . get_comment_reply_link(array('depth' => $depth, 'max_depth' => 5)) . '</span>';
+	$comment .= '</header>';
+	$comment .= '<div class="comment-body">';
+	$comment .= '<p>' . get_comment_text() . '</p>';
+	$comment .= '</div>';
+	$comment .= '</li>';
+ 
+	echo $comment;
+}
