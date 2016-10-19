@@ -462,7 +462,7 @@ a, a:link, a:hover {
 }
 
 .accent {
-	background:#333333;	
+	background:#333333;
 }
 
 body {
@@ -689,7 +689,7 @@ aside.sidebar {
 	text-decoration: none;
 }
 .post-entry .read-more span {
-	color: #45ac9d; 
+	color: #45ac9d;
 }
 .post-entry .read-more:hover {
 	border-bottom: 1px solid #45ac9d;
@@ -944,7 +944,7 @@ section .navigation {
 
 .homepage-hero h1 {
 	color:white;
-	font-weight:bold;	
+	font-weight:bold;
 }
 
 .homepage-hero h3 {
