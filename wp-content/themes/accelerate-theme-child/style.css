@@ -10,11 +10,19 @@
  Text Domain:  accelerate-theme-child
 */
 
-h1{
-  color:pink;
-  font-size:100px;
+.home-page {
+    background-image: url("img/taxi-photo.jpg") no-repeat scroll left center / cover rgba(0, 0, 0, 0);
 }
 
-body{
-  background:blue;
+
+.home-page {
+    background: url("img/taxi-photo.jpg") no-repeat scroll left center / cover rgba(0, 0, 0, 0);
+}
+
+#masthead {
+    background: none repeat scroll 0 0 #45ac9d;
+}
+
+.button {
+    background: none repeat scroll 0 0 #45ac9d;
 }
