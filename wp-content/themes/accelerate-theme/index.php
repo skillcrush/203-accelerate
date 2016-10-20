@@ -19,12 +19,12 @@ get_header(); ?>
 	<section class="blog-page">
 		<div class="site-content">
 			<div class="main-content">
-				
+
 			<?php
 			if ( have_posts() ) :
 				// Start the Loop.
 				while ( have_posts() ) : the_post(); ?>
-				
+
 					<article class="post-entry">
 						<div class="entry-wrap">
 							<header class="entry-header">
@@ -44,22 +44,22 @@ get_header(); ?>
 								</div>
 							</footer>
 						</div>
-					
+
 					</article>
-					
+
 			<?php endwhile; endif; ?>
 			</div>
 
 			<?php get_sidebar(); ?>
-		
+
 				<div class="clearfix"></div>
-					
-			<div id="navigation" class="navigation"> 
+
+			<div id="navigation" class="navigation">
 				<div class="left"><?php next_posts_link('&larr; <span>Older Posts</span>'); ?></div>
 				<div class="right"><?php previous_posts_link('<span>Newer Posts</span> &rarr;'); ?></div>
 			</div>
 
-						
+
 		</div>
 
 	</section>
