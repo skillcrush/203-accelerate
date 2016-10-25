@@ -50,3 +50,21 @@
 	color: #45ac9d;
 	text-transform: uppercase;
 }
+
+/*Case Studies */
+
+aside .case-study-sidebar{
+  float:left;
+  width:300px;
+}
+
+div.case-study-images{
+  float:left;
+  width:606px;
+}
+
+div.case-study-images img{
+  display:block;
+  margin-bottom:50px;
+  border:1px solid gray;
+}
