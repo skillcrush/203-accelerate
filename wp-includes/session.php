@@ -40,7 +40,7 @@ abstract class WP_Session_Tokens {
 	 */
 	final public static function get_instance( $user_id ) {
 		/**
-		 * Filter the session token manager used.
+		 * Filters the session token manager used.
 		 *
 		 * @since 4.0.0
 		 *
@@ -61,7 +61,12 @@ abstract class WP_Session_Tokens {
 	 * @return string A hash of the session token (a verifier).
 	 */
 	final private function hash_token( $token ) {
-		return hash( 'sha256', $token );
+		// If ext/hash is not present, use sha1() instead.
+		if ( function_exists( 'hash' ) ) {
+			return hash( 'sha256', $token );
+		} else {
+			return sha1( $token );
+		}
 	}
 
 	/**
@@ -103,7 +108,7 @@ abstract class WP_Session_Tokens {
 	 *
 	 * This function generates a token and stores it with the associated
 	 * expiration time (and potentially other session information via the
-	 * `attach_session_information` filter).
+	 * {@see 'attach_session_information'} filter).
 	 *
 	 * @since 4.0.0
 	 * @access public
@@ -113,7 +118,7 @@ abstract class WP_Session_Tokens {
 	 */
 	final public function create( $expiration ) {
 		/**
-		 * Filter the information attached to the newly created session.
+		 * Filters the information attached to the newly created session.
 		 *
 		 * Could be used in the future to attach information such as
 		 * IP address or user agent to a session.
@@ -125,6 +130,19 @@ abstract class WP_Session_Tokens {
 		 */
 		$session = apply_filters( 'attach_session_information', array(), $this->user_id );
 		$session['expiration'] = $expiration;
+
+		// IP address.
+		if ( !empty( $_SERVER['REMOTE_ADDR'] ) ) {
+			$session['ip'] = $_SERVER['REMOTE_ADDR'];
+		}
+
+		// User-agent.
+		if ( ! empty( $_SERVER['HTTP_USER_AGENT'] ) ) {
+			$session['ua'] = wp_unslash( $_SERVER['HTTP_USER_AGENT'] );
+		}
+
+		// Timestamp
+		$session['login'] = time();
 
 		$token = wp_generate_password( 43, false, false );
 
@@ -257,6 +275,7 @@ abstract class WP_Session_Tokens {
 	 * @access protected
 	 *
 	 * @param string $verifier Verifier of the session to update.
+	 * @param array  $session  Optional. Session. Omitting this argument destroys the session.
 	 */
 	abstract protected function update_session( $verifier, $session = null );
 
@@ -378,10 +397,6 @@ class WP_User_Meta_Session_Tokens extends WP_Session_Tokens {
 	 * @param array $sessions Sessions.
 	 */
 	protected function update_sessions( $sessions ) {
-		if ( ! has_filter( 'attach_session_information' ) ) {
-			$sessions = wp_list_pluck( $sessions, 'expiration' );
-		}
-
 		if ( $sessions ) {
 			update_user_meta( $this->user_id, 'session_tokens', $sessions );
 		} else {
@@ -420,6 +435,6 @@ class WP_User_Meta_Session_Tokens extends WP_Session_Tokens {
 	 * @static
 	 */
 	public static function drop_sessions() {
-		delete_metadata( 'user', false, 'session_tokens', false, true );
+		delete_metadata( 'user', 0, 'session_tokens', false, true );
 	}
 }
