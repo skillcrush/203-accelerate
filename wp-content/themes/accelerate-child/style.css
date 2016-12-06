@@ -10,6 +10,16 @@
  Text Domain:  accelerate-theme-child
 */
 @import url("../accelerate-theme/style.css");
-body {
-	background: red;
+
+/* Homepage styling - new hero image */
+.home-page {
+    background: url("/accelerate/wp-content/themes/accelerate-child/img/taxi-photo.jpg") no-repeat scroll left center / cover rgba(0, 0, 0, 0);
+}
+
+/* Nav styling - new color */
+#masthead {
+    background: none repeat scroll 0 0 #45ac9d;
+}
+.button {
+    background: none repeat scroll 0 0 #45ac9d;
 }
