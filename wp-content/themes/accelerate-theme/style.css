@@ -456,10 +456,9 @@ hr {
 #page {
 	padding:0;
 }
-
 a, a:link, a:hover {
 	color:#333;
-}
+} 
 
 .accent {
 	background:#333333;	
