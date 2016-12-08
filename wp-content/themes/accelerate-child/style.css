@@ -1,0 +1,72 @@
+/*
+ Theme Name:   Accelerate Theme Child
+ Theme URI:    http://example.com/accelerate-theme-child/
+ Description:  Accelerate Child Theme - Accelerate
+ Author:       Your Name!
+ Author URI:   http://example.com
+ Template:     accelerate-theme
+ Version:      1.0.0
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  accelerate-theme-child
+*/
+@import url("../accelerate-theme/style.css");
+
+/* Homepage styling - new hero image */
+.home-page {
+    background: url("/accelerate/wp-content/themes/accelerate-child/img/taxi-photo.jpg") no-repeat scroll left center / cover rgba(0, 0, 0, 0);
+}
+
+/* Nav styling - new color */
+#masthead {
+    background: none repeat scroll 0 0 #45ac9d;
+}
+.button {
+    background: none repeat scroll 0 0 #45ac9d;
+}
+
+/* Blog post on front page styling */
+h2 {
+	line-height: 2.5;
+}
+h4 {
+	text-transform: uppercase;
+	color:darkgray;
+	font-size: 16px;
+}
+.blog-post p {
+	width: 50%;
+	color:darkgray;
+	font-size: 14px;
+}
+a, a:link, a:hover span {
+	color: #45ac9d; 
+	text-transform: uppercase;
+	font-size:16px;
+	font-weight: 700;
+}
+
+/* Footer styling */
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	margin: 0 auto;
+	overflow: hidden;
+}
+#social-icon-list li {
+	display: inline;
+	padding-right: 10px;
+}
+#social-icon-list img {
+	width:30px;
+	height: 30px;
+}
+.business-tagline {
+	width: 45%;
+	float: clear;
+}
+.highlight {
+	color:#45ac9d;
+}
+	
