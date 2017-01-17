@@ -12,28 +12,24 @@
 					<a href="<?php echo esc_url( Akismet_Admin::get_page_url( 'stats' ) ); ?>" class=""><?php esc_html_e( 'Summaries' , 'akismet');?></a>
 				</span>
 
-				<iframe allowtransparency="true" scrolling="no" frameborder="0" style="width: 100%; height: 215px; overflow: hidden;" src="<?php printf( '//akismet.com/web/1.0/snapshot.php?blog=%s&api_key=%s&height=180&locale=%s', urlencode( get_bloginfo('url') ), Akismet::get_api_key(), get_locale() );?>"></iframe>
+				<iframe allowtransparency="true" scrolling="no" frameborder="0" style="width: 100%; height: 215px; overflow: hidden;" src="<?php printf( '//akismet.com/web/1.0/snapshot.php?blog=%s&api_key=%s&height=180&locale=%s', urlencode( get_option( 'home' ) ), Akismet::get_api_key(), get_locale() );?>"></iframe>
 				<ul>
 					<li>
 						<h3><?php esc_html_e( 'Past six months' , 'akismet');?></h3>
 						<span><?php echo number_format( $stat_totals['6-months']->spam );?></span>
-						<?php esc_html_e( 'Spam blocked' , 'akismet');?>
+						<?php echo esc_html( _n( 'Spam blocked', 'Spam blocked', $stat_totals['6-months']->spam, 'akismet' ) ); ?>
 					</li>
 					<li>
 						<h3><?php esc_html_e( 'All time' , 'akismet');?></h3>
 						<span><?php echo number_format( $stat_totals['all']->spam );?></span>
-						<?php esc_html_e( 'Spam blocked' , 'akismet');?>
+						<?php echo esc_html( _n( 'Spam blocked', 'Spam blocked', $stat_totals['all']->spam, 'akismet' ) ); ?>
 					</li>
 					<li>
 						<h3><?php esc_html_e( 'Accuracy' , 'akismet');?></h3>
-						<span><?php echo $stat_totals['all']->accuracy; ?>%</span>
-						<?php printf(
-							esc_html(
-								_n( '%s missed spam, %s false positive', '%s missed spam, %s false positives', $stat_totals['all']->false_positives , 'akismet')
-							),
-							number_format( $stat_totals['all']->missed_spam ),
-							number_format( $stat_totals['all']->false_positives )
-						); ?>
+						<span><?php echo floatval( $stat_totals['all']->accuracy ); ?>%</span>
+						<?php printf( _n( '%s missed spam', '%s missed spam', $stat_totals['all']->missed_spam, 'akismet' ), number_format( $stat_totals['all']->missed_spam ) ); ?>
+						|
+						<?php printf( _n( '%s false positive', '%s false positives', $stat_totals['all']->false_positives, 'akismet' ), number_format( $stat_totals['all']->false_positives ) ); ?>
 					</li>
 				</ul>
 				<div class="clearfix"></div>
@@ -64,13 +60,43 @@
 										<tbody>
 											<?php if ( !defined( 'WPCOM_API_KEY' ) ):?>
 											<tr>
-												<th width="10%" align="left" scope="row"><?php esc_html_e('API Key', 'akismet');?></th>
+												<th class="akismet-api-key" width="10%" align="left" scope="row"><?php esc_html_e('API Key', 'akismet');?></th>
 												<td width="5%"/>
 												<td align="left">
-													<span class="api-key"><input id="key" name="key" type="text" size="15" maxlength="12" value="<?php echo esc_attr( get_option('wordpress_api_key') ); ?>" class="regular-text code <?php echo $akismet_user->status;?>"></span>
+													<span class="api-key"><input id="key" name="key" type="text" size="15" value="<?php echo esc_attr( get_option('wordpress_api_key') ); ?>" class="<?php echo esc_attr( 'regular-text code ' . $akismet_user->status ); ?>"></span>
 												</td>
 											</tr>
 											<?php endif; ?>
+											<?php if ( isset( $_GET['ssl_status'] ) ) { ?>
+												<tr>
+													<th align="left" scope="row"><?php esc_html_e( 'SSL Status', 'akismet' ); ?></th>
+													<td></td>
+													<td align="left">
+														<p>
+															<?php
+
+															if ( ! function_exists( 'wp_http_supports' ) ) {
+																?><b><?php esc_html_e( 'Disabled.', 'akismet' ); ?></b> <?php printf( esc_html( 'Your WordPress installation does not include the function %s; upgrade to the latest version of WordPress.', 'akismet' ), '<code>wp_http_supports</code>' ); ?><?php
+															}
+															else if ( ! wp_http_supports( array( 'ssl' ) ) ) {
+																?><b><?php esc_html_e( 'Disabled.', 'akismet' ); ?></b> <?php esc_html_e( 'Your Web server cannot make SSL requests; contact your Web host and ask them to add support for SSL requests.', 'akismet' ); ?><?php
+															}
+															else {
+																$ssl_disabled = get_option( 'akismet_ssl_disabled' );
+
+																if ( $ssl_disabled ) {
+																	?><b><?php esc_html_e( 'Temporarily disabled.', 'akismet' ); ?></b> <?php esc_html_e( 'Akismet encountered a problem with a previous SSL request and disabled it temporarily. It will begin using SSL for requests again shortly.', 'akismet' ); ?><?php
+																}
+																else {
+																	?><b><?php esc_html_e( 'Enabled.', 'akismet' ); ?></b> <?php esc_html_e( 'All systems functional.', 'akismet' ); ?><?php
+																}
+															}
+
+															?>
+														</p>
+													</td>
+												</tr>
+											<?php } ?>
 											<tr>
 												<th align="left" scope="row"><?php esc_html_e('Comments', 'akismet');?></th>
 												<td></td>
@@ -88,7 +114,23 @@
 													<p><label for="akismet_strictness_1"><input type="radio" name="akismet_strictness" id="akismet_strictness_1" value="1" <?php checked('1', get_option('akismet_strictness')); ?> /> <?php esc_html_e('Silently discard the worst and most pervasive spam so I never see it.', 'akismet'); ?></label></p>
 													<p><label for="akismet_strictness_0"><input type="radio" name="akismet_strictness" id="akismet_strictness_0" value="0" <?php checked('0', get_option('akismet_strictness')); ?> /> <?php esc_html_e('Always put spam in the Spam folder for review.', 'akismet'); ?></label></p>
 													</fieldset>
-													<span class="note"><strong><?php esc_html_e('Note:', 'akismet');?></strong> <?php printf( __( 'Spam in the <a href="%s">spam folder</a> older than 15 days is deleted automatically.' , 'akismet'), admin_url( 'edit-comments.php?comment_status=spam' ) );?></span>
+													<span class="note"><strong><?php esc_html_e('Note:', 'akismet');?></strong>
+													<?php
+													
+													$delete_interval = max( 1, intval( apply_filters( 'akismet_delete_comment_interval', 15 ) ) );
+													
+													printf(
+														_n(
+															'Spam in the <a href="%1$s">spam folder</a> older than 1 day is deleted automatically.',
+															'Spam in the <a href="%1$s">spam folder</a> older than %2$d days is deleted automatically.',
+															$delete_interval,
+															'akismet'
+														),
+														admin_url( 'edit-comments.php?comment_status=spam' ),
+														$delete_interval
+													);
+													
+													?>
 												</td>
 											</tr>
 										</tbody>
@@ -124,7 +166,7 @@
 											<th scope="row" align="left"><?php esc_html_e( 'Subscription Type' , 'akismet');?></th>
 											<td width="5%"/>
 											<td align="left">
-												<span><?php echo $akismet_user->account_name; ?></span>
+												<span><?php echo esc_html( $akismet_user->account_name ); ?></span>
 											</td>
 										</tr>
 										<tr>
