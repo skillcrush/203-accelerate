@@ -18,7 +18,7 @@ if ( defined('ABSPATH') )
 else
 	require_once( dirname( dirname( __FILE__ ) ) . '/wp-load.php' );
 
-/** Allow for cross-domain requests (from the frontend). */
+/** Allow for cross-domain requests (from the front end). */
 send_origin_headers();
 
 require_once(ABSPATH . 'wp-admin/includes/admin.php');
@@ -42,7 +42,7 @@ if ( ! wp_validate_auth_cookie() ) {
 		/**
 		 * Fires on a non-authenticated admin post request for the given action.
 		 *
-		 * The dynamic portion of the hook name, $action, refers to the given
+		 * The dynamic portion of the hook name, `$action`, refers to the given
 		 * request action.
 		 *
 		 * @since 2.6.0
@@ -61,7 +61,7 @@ if ( ! wp_validate_auth_cookie() ) {
 		/**
 		 * Fires on an authenticated admin post request for the given action.
 		 *
-		 * The dynamic portion of the hook name, $action, refers to the given
+		 * The dynamic portion of the hook name, `$action`, refers to the given
 		 * request action.
 		 *
 		 * @since 2.6.0
