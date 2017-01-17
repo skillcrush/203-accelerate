@@ -10,9 +10,6 @@
 /** Load WordPress Administration Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
-if ( ! is_multisite() )
-	wp_die( __( 'Multisite support is not enabled.' ) );
-
 if ( empty( $_GET['action'] ) ) {
 	wp_redirect( network_admin_url() );
 	exit;
@@ -31,7 +28,7 @@ do_action( 'wpmuadminedit' );
 /**
  * Fires the requested handler action.
  *
- * The dynamic portion of the hook name, $_GET['action'], refers to the name
+ * The dynamic portion of the hook name, `$_GET['action']`, refers to the name
  * of the requested action.
  *
  * @since 3.1.0
