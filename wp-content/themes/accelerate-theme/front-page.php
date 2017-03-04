@@ -13,6 +13,7 @@
  */
 
 get_header(); ?>
+<pre><?php print_r($wp_query); exit; ?></pre>
 
 <section class="home-page">
 	<div class="site-content">
