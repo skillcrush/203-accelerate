@@ -26,6 +26,11 @@
     background: none repeat scroll 0 0 #45ac9d;
 }
 
+#masthead nav ul li {
+  float: left;
+  margin: 0 10px;
+}
+
 .blog-post {
   width: 50%;
 }
@@ -49,4 +54,26 @@
   font-weight: bold;
   color: #45ac9d;
   text-transform: uppercase;
+}
+
+/* Case study pages */
+
+article.case-study {
+  margin: 40px 0 0;
+}
+
+aside.case-study-sidebar {
+  float: left;
+  width: 314px;
+  margin: 0 40px 0 0;
+}
+
+div.case-study-images {
+  float: left;
+  width: 600px;
+}
+
+div.case-study-images img {
+  margin-bottom: 50px;
+  border: 1px solid #dddddd;
 }
