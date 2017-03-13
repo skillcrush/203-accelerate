@@ -1,0 +1,113 @@
+/*
+ Theme Name:   Accelerate Theme Child
+ Theme URI:    http://example.com/accelerate-theme-child/
+ Description:  Accelerate Child Theme - Accelerate
+ Author:       Joanne Sullivan
+ Author URI:   http://www.tangledcreekwebdevelopment.com
+ Template:     accelerate-theme
+ Version:      1.0.0
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  accelerate-theme-child
+*/
+
+@import url("../accelerate-theme/style.css");
+
+/* homepage style */
+
+.home-page {
+    background: url("img/taxi-photo.jpg") no-repeat scroll left center / cover rgba(0, 0, 0, 0);
+}
+
+#masthead {
+    background: none repeat scroll 0 0 #45ac9d;
+}
+
+.button {
+    background: none repeat scroll 0 0 #45ac9d;
+}
+
+#masthead nav ul li {
+  float: left;
+  margin: 0 10px;
+}
+
+.blog-post {
+  width: 50%;
+}
+
+.blog-post h4 {
+  font-size: 16px;
+  font-family: 'Montserrat';
+  color: #a6a6a6;
+  text-transform: uppercase;
+}
+
+.blog-post h2 {
+  font-size: 24px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+}
+
+.blog-post .read-more-link {
+  font-size: 24px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  color: #45ac9d;
+  text-transform: uppercase;
+}
+
+/* Featured Work on the home page */
+
+.homepage-featured-work li {
+  display: inline-block;
+  width: 31%;
+  margin-right: 3%;
+}
+
+/* remove margin from rightmost list item */
+.homepage-featured-work li:last-child {
+  margin-right: 0;
+}
+
+.featured-work h4 {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+/* Keep images contained */
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* Case study pages */
+
+article.case-study {
+  margin: 40px 0 0;
+}
+
+aside.case-study-sidebar {
+  float: left;
+  width: 314px;
+  margin: 0 40px 0 0;
+}
+
+div.case-study-images {
+  float: left;
+  width: 600px;
+}
+
+div.case-study-images img {
+  margin-bottom: 50px;
+  border: 1px solid #dddddd;
+}
+
+/* Case study archive page */
+
+.case-study-sidebar h5 {
+  color: #a6a6a6;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 12px 0 18px 0;
+}
