@@ -1,0 +1,110 @@
+/*
+ Theme Name:   Accelerate Theme Child
+ Theme URI:    http://example.com/accelerate-theme-child/
+ Description:  Accelerate Child Theme - Accelerate
+ Author:       Your Name!
+ Author URI:   http://example.com
+ Template:     accelerate-theme
+ Version:      1.0.0
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  accelerate-theme-child
+*/
+
+@import url("../accelerate-theme/style.css");
+
+.home-page {
+    background: url("img/taxi-photo.jpg") no-repeat scroll left center / cover rgba(0, 0, 0, 0);
+}
+#masthead {
+    background: none repeat scroll 0 0 #45ac9d;
+}
+.button {
+    background: none repeat scroll 0 0 #45ac9d;
+}
+#masthead nav ul li {
+
+  margin:0 60px;
+}
+
+/* homepage case studies*/
+h3.featured {
+  text-align: center;
+}
+
+.image-strip {
+  width: 100%;
+}
+
+ul.homepage-featured-work {
+  list-style: none;
+  text-align: center;
+}
+
+.featured-work h4 {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+/*ul.homepage-featured-work li {
+  display: inline;
+}*/
+
+.homepage-featured-work li {
+  display: inline-block;
+  width: 31%;
+  margin-right: 3%;
+}
+
+.homepage-featured-work li:last-child {
+  margin-right: 0;
+}
+
+/* homepage blog post */
+.blog-post {
+	width: 50%;
+}
+.blog-post h4 {
+	font-size: 16px;
+	font-family: 'Montserrat';
+	color: #a6a6a6;
+	text-transform: uppercase;
+}
+.blog-post h2 {
+	font-size: 24px;
+	font-family: 'Montserrat';
+	font-weight: bold;
+}
+.blog-post .read-more-link {
+	font-size: 24px;
+	font-family: 'Montserrat';
+	font-weight: bold;
+	color: #45ac9d;
+	text-transform: uppercase;
+}
+
+
+/*Case Studies*/
+
+article.case-study{
+  margin: 40px 0 0;
+}
+
+aside.case-study-sidebar{
+  float:left;
+  width: 314px;
+  margin: 0 40px 0 0;
+}
+div.case-study-images{
+  float: left;
+  width: 606px;
+}
+div.case-study-images img {
+  margin-bottom: 50px;
+  border: 1px solid #dddddd;
+}
+
+/* archive case studies */
+
+.clearfix {
+  overflow: auto;
+}
