@@ -4,60 +4,26 @@
  *
  * @package WordPress
  * @subpackage Accelerate Marketing
- * @since Accelerate Marketing 1.0
+ * @since Accelerate Marketing 2.0
  */
 
 get_header(); ?>
 
-	<!-- BLOG PAGE -->
-	<section class="blog-page">
-		<div class="site-content">
-			<div class="main-content">
-				
-				<?php
-				// Start the Loop.
-				while ( have_posts() ) : the_post(); ?>
+<section class="single-page">
+	<div class="site-content">
+		<div class="main-content">
+			<?php while ( have_posts() ) : the_post(); ?>
+				<?php get_template_part('content', get_post_format()); ?>
+				<?php comments_template(); ?>
+			<?php endwhile; ?>
+		</div>
 
-				<article class="post-entry individual-post">
-					<div class="entry-wrap">
-						
-						<header class="entry-header">
-							<div class="entry-meta">
-								<time class="entry-time"><?php the_date();?></time>
-							</div>
-							<h2 class="entry-title"><?php the_title(); ?></h2>
-						</header>
-						
-						<div class="entry-summary">
-							<?php the_content(); ?>
-						</div>
-						
-						<footer class="entry-footer">
-							<div class="entry-meta">
-								<span class="entry-terms author">Written by <?php the_author_posts_link(); ?></span>
-								<span class="entry-terms category">Posted in <?php the_category(', '); ?></span>
-								<span class="entry-terms comments"><?php comments_number( 'No comments yet!', '1 comment', '% comments' ); ?></span>
-							</div>
-						</footer>
-						
-					</div>
-				</article>
+		<?php get_sidebar(); ?>
+	</div>
+</section>
 
-					<?php 
-						if ( comments_open() || get_comments_number() ) :
-							comments_template();
-						endif; ?>
-			</div>
+<div id="navigation" class="container">
+	<div class="left"><a href="<?php echo site_url('/blog/') ?>">&larr; <span>Back to posts</span></a></div>
+</div>
 
-			<?php get_sidebar(); ?>
-
-			<footer class="navigation container">
-				<div class="left">&larr;<a href="<?php echo home_url(); ?>/blog">back to posts</a></div>
-			</footer>
-	 
-				<?php endwhile; ?>
-			</div>
-		</section>	
-		
-<?php
-get_footer();
+<?php get_footer(); ?>

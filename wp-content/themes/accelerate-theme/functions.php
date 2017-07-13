@@ -22,23 +22,37 @@
  *
  * @package WordPress
  * @subpackage Accelerate Marketing
- * @since Accelerate Marketing 1.0
+ * @since Accelerate Marketing 2.0
  */
 
-/**
- * Register menus.
- */
+// Theme support for menus
 function accelerate_setup() {
-  register_nav_menus( array(
-    'top-nav' => __( 'Top Nav', 'accelerate' ),
-    'social-media'  => __( 'Social Media Nav', 'accelerate' ),
-  ) );
-}
-add_action( 'after_setup_theme', 'accelerate_setup' ); 
 
-/**
- * Register widget area.
- */
+    /*
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 */
+	add_theme_support( 'title-tag' );
+
+    // Register Menus
+    register_nav_menus( array (
+        'top-nav' => __( 'Top Nav', 'accelerate' ),
+        'social-media'  => __( 'Social Media Nav', 'accelerate' ),
+    ) );
+}
+add_action( 'after_setup_theme', 'accelerate_setup' );
+
+// Enqueue scripts and styles.
+function accelerate_scripts() {
+	wp_enqueue_style( 'accelerate-style', get_stylesheet_uri() );
+    wp_enqueue_style( 'accelerate-google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:400,700' );
+    wp_enqueue_style( 'accelerate-google-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i' );
+}
+add_action( 'wp_enqueue_scripts', 'accelerate_scripts' );
+
+// Register widget area
 function accelerate_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Widget Area', 'accelerate' ),
@@ -52,7 +66,7 @@ function accelerate_widgets_init() {
 }
 add_action( 'widgets_init', 'accelerate_widgets_init' );
 
-// defines custom markup for post comments
+// Defines custom markup for post comments
 function accelerate_comments($comment, $args, $depth) {
 	$comment  = '<li class="comment">';
 	$comment .=	'<header class="comment-head">';
@@ -63,6 +77,12 @@ function accelerate_comments($comment, $args, $depth) {
 	$comment .= '<p>' . get_comment_text() . '</p>';
 	$comment .= '</div>';
 	$comment .= '</li>';
- 
+
 	echo $comment;
 }
+
+// Changes excerpt symbol
+function custom_excerpt_more($more) {
+	return '...<div class="read-more"><a  href="'. get_permalink() . '"><span>Read more</span> &rsaquo;</a></div>';
+}
+add_filter('excerpt_more', 'custom_excerpt_more');
