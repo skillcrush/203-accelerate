@@ -131,6 +131,14 @@ h3 {
    font-size: 1.125em;
    line-height: 1.75;
 }
+h4 {
+font-size: 20px;
+line-height: 1.2;
+}
+h5 {
+font-size: 18px;
+line-height: 1.3333333333;
+}
 ul {
    list-style: disc;
    margin: 1em 0 1em 1.125em;
@@ -161,11 +169,27 @@ blockquote footer:before {
    content: '—';
 }
 figure, img {
-   width: 100%;
+   max-width: 100%;
    height: auto;
 }
 iframe {
    width: 100%;
+}
+input {
+height: 37px;
+border: 1px solid #BFBFBF;
+line-height: 25px;
+padding: 5px 10px;
+background: #fff;
+vertical-align: middle;
+margin: 0;
+font: 16px 'Open Sans', Arial, sans-serif;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+cursor: pointer;
 }
 /* End MAIN STYLES */
 
@@ -354,12 +378,6 @@ body {
 	font-size: .8em;
 	color: #a6a6a6;
 }
-.read-more a{
-    font-family: 'Montserrat';
-    text-transform: uppercase;
-	color: #45ac9d;
-	font-weight: 600;
-}
 .entry-footer .entry-terms {
 	color: #a6a6a6;
 	font-size: .82em;
@@ -442,7 +460,7 @@ body {
 	border-bottom: 1px solid #a6a6a6;
 	border-right: 1px solid #a6a6a6;
 	border-left: none;
-	height: 2.9em;
+	height: 2.4em;
 	background: url('img/white-arrow-right.png') no-repeat center #45ac9d;
 	color: #ffffff;
 	margin-left: -5px;
@@ -629,13 +647,10 @@ body {
 	margin: 1.5em 0;
 	float: right;
 }
+
 /* End SINGLE POST STYLES */
 
 /* HOMEPAGE STYLES */
-/*.home #main {
-    width: 100%;
-    max-width: none;
-}*/
 
 .home .site-content{
 	display: block;
@@ -656,6 +671,7 @@ body {
 	color: #fff;
 	font-weight:bold;
 	font-size: 3.3em;
+	margin: 0;
 }
 .homepage-hero h3 {
     color: #fff;

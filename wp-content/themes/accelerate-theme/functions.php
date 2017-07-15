@@ -83,6 +83,6 @@ function accelerate_comments($comment, $args, $depth) {
 
 // Changes excerpt symbol
 function custom_excerpt_more($more) {
-	return '...<div class="read-more"><a  href="'. get_permalink() . '"><span>Read more</span> &rsaquo;</a></div>';
+	return '...<div class="read-more-link"><a  href="'. get_permalink() . '"><span>Read more</span> &rsaquo;</a></div>';
 }
 add_filter('excerpt_more', 'custom_excerpt_more');
