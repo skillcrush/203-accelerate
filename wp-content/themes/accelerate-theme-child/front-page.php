@@ -9,7 +9,7 @@
  *
  * @package WordPress
  * @subpackage Accelerate Marketing
- * @since Accelerate Marketing 1.0
+ * @since Accelerate Marketing 2.0
  */
 
 get_header(); ?>
@@ -33,7 +33,6 @@ get_header(); ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 				<h2><?php the_title(); ?></h2>
 				<?php the_excerpt(); ?>
-				<a href="<?php the_permalink(); ?>" class="read-more-link">Read More <span>&rsaquo;</span></a>
 			<?php endwhile; // end of the loop. ?>
 			<?php wp_reset_query(); // resets the altered query back to the original ?>
 		</div>
