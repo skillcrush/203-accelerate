@@ -5,7 +5,7 @@
  *
  * @package WordPress
  * @subpackage Accelerate_Theme
- * @since Accelerate Theme 1.1
+ * @since Accelerate Theme 2.0
  */
 
 get_header(); ?>
