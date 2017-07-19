@@ -132,12 +132,13 @@ h3 {
    line-height: 1.75;
 }
 h4 {
-font-size: 20px;
-line-height: 1.2;
+	font-size: 16px;
+    font-size: 1em;
 }
-h5 {
-font-size: 18px;
-line-height: 1.3333333333;
+ h5 {
+	 font-size: 16px;
+	 font-size: 1em;
+	 text-transform: uppercase;
 }
 ul {
    list-style: disc;
@@ -176,20 +177,22 @@ iframe {
    width: 100%;
 }
 input {
-height: 37px;
-border: 1px solid #BFBFBF;
-line-height: 25px;
-padding: 5px 10px;
-background: #fff;
-vertical-align: middle;
-margin: 0;
-font: 16px 'Open Sans', Arial, sans-serif;
+	font: 1em 'OpenSans', Arial, sans-serif;
+	line-height: 2;
+	height: 2.3125em;
+	border: 1px solid #BFBFBF;
+	margin: 0;
+	padding: 0.3em 0.625em;
+	background: #fff;
+	vertical-align: middle;
 }
-button,
-html input[type="button"],
-input[type="reset"],
+input[type="button"],
 input[type="submit"] {
-cursor: pointer;
+	font: 700 1.125em/3.5 'Montserrat', 'OpenSans', Arial, sans-serif;
+	color: #fff;
+	background: #45ac9d;
+	border: none;
+	padding: 0 2em;
 }
 /* End MAIN STYLES */
 
@@ -450,7 +453,7 @@ body {
 	border-bottom: 1px solid #a6a6a6;
 	border-left: 1px solid #a6a6a6;
 	border-right: none;
-	height: 2.6em;
+	height: 2.6rem;
 	padding: .5em;
 	vertical-align: middle;
 }
@@ -460,10 +463,12 @@ body {
 	border-bottom: 1px solid #a6a6a6;
 	border-right: 1px solid #a6a6a6;
 	border-left: none;
-	height: 2.4em;
+	font: .875em/1.75em 'Open Sans', Arial, sans-serif;
+	height: 2.6rem;
 	background: url('img/white-arrow-right.png') no-repeat center #45ac9d;
 	color: #ffffff;
 	margin-left: -5px;
+	padding: 0;
 	vertical-align: middle;
 }
 #sidebar h2 {
@@ -651,7 +656,6 @@ body {
 /* End SINGLE POST STYLES */
 
 /* HOMEPAGE STYLES */
-
 .home .site-content{
 	display: block;
 }
