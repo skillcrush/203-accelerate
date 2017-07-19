@@ -46,9 +46,9 @@
 				<div class="widget widget_events">
 					<h2 class="widget-title">Events</h3>
 					<ul>
-						<li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Brooklyn.png" alt=""/></a></li>
-						<li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Rails.png" alt=""/></a></li>
-						<li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Etsy.png" alt=""/></a></li>
+						<li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/Brooklyn.png" alt=""/></a></li>
+						<li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/Rails.png" alt=""/></a></li>
+						<li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/Etsy.png" alt=""/></a></li>
 					</ul>
 				</div>
 
