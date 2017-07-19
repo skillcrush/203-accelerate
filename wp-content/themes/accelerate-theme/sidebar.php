@@ -9,15 +9,9 @@
 ?>
 
 <div id="sidebar">
-	<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-	<div id="primary-sidebar" class="primary-sidebar widget-area" role="complementary">
-		<?php dynamic_sidebar( 'sidebar-1' ); ?>
-	</div><!-- #primary-sidebar -->
 
-	<?php else : ?>
 			<div class="widget widget_text">
-					<div class="avatar"><img src="upload/Emily2.jpg" alt=""></div>
-					<div class="intro-text">This is a practice site for our <a href="http://skillcrush.com/">Skillcrush</a> students. <a href="https://skillcrush.com/wordpress-blueprint-package">We’d love to see you in class!</a></div>
+					<div class="intro-text">This is a practice site for our <a href="http://skillcrush.com/">Skillcrush</a> students. <a href="https://skillcrush.com/wordpress-blueprint-package-first-to-know">We’d love to see you in class!</a></div>
 				</div>
 
 				<div class="widget widget_search">
@@ -52,10 +46,10 @@
 				<div class="widget widget_events">
 					<h2 class="widget-title">Events</h3>
 					<ul>
-						<li><a href=""><img src="upload/Event-1.jpg" alt=""></a></li>
-						<li><a href=""><img src="upload/Event-2.jpg" alt=""></a></li>
-						<li><a href=""><img src="upload/Event-3.jpg" alt=""></a></li>
+						<li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Brooklyn.png" alt=""/></a></li>
+						<li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Rails.png" alt=""/></a></li>
+						<li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Etsy.png" alt=""/></a></li>
 					</ul>
 				</div>
-	<?php endif; ?>
+
 </div>
