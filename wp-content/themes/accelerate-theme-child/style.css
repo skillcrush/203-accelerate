@@ -13,36 +13,32 @@
 @import url("../accelerate-theme/style.css");
 
 .home-page {
-    background: url("img/taxi-photo.jpg") no-repeat scroll left center / cover rgba(0, 0, 0, 0);
+    background: url("img/taxi-photo.jpg") no-repeat scroll right center / cover rgba(0, 0, 0, 0);
 }
+
 #masthead {
     background: none repeat scroll 0 0 #45ac9d;
 }
+
 .button {
-	background: none repeat scroll 0 0 #45ac9d;
+    background: #45ac9d;
 }
 
-/* blog post on homepage */
-.recent-posts {
-	overflow: hidden;
-}
 .blog-post {
-	width: 44.75%;
-	padding-right: 50px;
-	float: left;
+	width: 50%;
 }
 .blog-post h4 {
-	font: 16px 'Montserrat';
-	color: #a6a6a6;
+    font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
+    color: #a6a6a6;
 	text-transform: uppercase;
-	margin-top: 0;
+    margin: 2em 0 .5em;
 }
 .blog-post h2 {
-	font: 700 24px 'Montserrat';
-	margin: 36px 0;
+	font-size: 1.5em;
 }
-.blog-post .read-more-link {
-	font: 700 15px 'Montserrat';
+.read-more-link {
+	font-family: 'Montserrat';
+    font-weight: 700;
 	color: #45ac9d;
 	text-transform: uppercase;
 }
