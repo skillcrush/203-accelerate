@@ -38,6 +38,12 @@ margin:0;
 }
 
 /* Featured work on homepage */
+.featured-content {
+   width: 90%;
+   max-width: 960px;
+   margin: 0 auto;
+}
+
 .featured-work {
 	overflow:auto;
 }
