@@ -1,0 +1,6 @@
+jQuery(document).ready(function(a){function b(){if(typeof jQuery.wp==="object"&&typeof jQuery.wp.wpColorPicker==="function"){var d={defaultColor:false,hide:true,palettes:true};
+jQuery(".intentColor").wpColorPicker(d);}else{jQuery("#colorpicker").farbtastic("intentColor");}}b();a(document).on("click",".secrets h4, .avatar h4, .twitterFollow h4, .modTime h4, .twitterIntents h4",function(){a(this).next("div").addClass("open");
+a(this).next("div").slideToggle("fast",function(){if(!a(this).is(":hidden")){a(this).siblings("h4").children("span").html("&#9650;");}else{a(this).removeClass("open");
+a(this).siblings("h4").children("span").html("&#9660;");}});});function c(f,g,d){if(a(".secrets > div, .avatar > div, .twitterFollow > div, .modTime > div, .twitterIntents > div").hasClass("open")){}else{a(".secrets > div, .avatar > div, .twitterFollow > div, .modTime > div, .twitterIntents > div").hide();
+a(".secrets h4 > span, .avatar h4 > span, .twitterFollow h4 > span, .modTime h4 > span, .twitterIntents h4 > span").html("&#9660;");}a(".intentColor .wp-picker-container").remove();
+b();}a(document).ajaxSuccess(function(f,g,d){c(f,g,d);});});
