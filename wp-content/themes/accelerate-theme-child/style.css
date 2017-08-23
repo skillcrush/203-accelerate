@@ -38,8 +38,7 @@
 	font-size: 1.5em;
 }
 .read-more-link {
-	font-family: 'Montserrat';
-    font-weight: 700;
+    font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
 	color: #45ac9d;
 	text-transform: uppercase;
 }
