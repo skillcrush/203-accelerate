@@ -25,19 +25,6 @@
 * @since Accelerate Marketing 2.0
 */
 
-// Enqueue scripts and styles
-function accelerate_child_scripts() {
-
-    $parent_style = 'accelerate-style';
-    wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
-    wp_enqueue_style( 'child-style',
-        get_stylesheet_directory_uri() . '/style.css',
-        array( $parent_style ),
-        wp_get_theme()->get('Version')
-    );
-}
-add_action( 'wp_enqueue_scripts', 'accelerate_child_scripts' );
-
 // Add a custom post type
 function create_custom_post_types() {
     register_post_type( 'case_studies',
