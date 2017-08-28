@@ -13,7 +13,7 @@
 @import url("../accelerate-theme/style.css");
 
 .home-page {
-    background: url("img/taxi-photo.jpg") no-repeat scroll left center / cover rgba(0, 0, 0, 0);
+    background: url("img/taxi-photo.jpg") no-repeat scroll right center / cover rgba(0, 0, 0, 0);
 }
 #masthead {
     background: none repeat scroll 0 0 #45ac9d;
@@ -22,135 +22,115 @@
 	background: none repeat scroll 0 0 #45ac9d;
 }
 
-#masthead nav ul {
-    list-style-type: none;
-    margin: 0;
-}
-
-.nav-menu {
-margin:0;
-}
-
-.nav-menu ul li {
-	float:left;
-	margin:0 30px;
-	text-transform:uppercase;
-}
-
-/* Featured work on homepage */
-.featured-content {
-   width: 90%;
-   max-width: 960px;
-   margin: 0 auto;
-}
-
-.featured-work {
-	overflow:auto;
-}
-
-.featured-work h4 {
-	font-family:'Montserrat';
-	text-transform:uppercase;
-	text-align:center;
-	margin:0 0 40px;
-}
-
-.featured-work ul {
-	margin:0;
-}
-
-.individual-featured-work {
-    float: left;
-    list-style-type: none;
-    margin: 0 3% 0 0;
-    width: 31%;
-}
-
-.individual-featured-work h3 {
-    font-size: 18px;
-    font-weight: normal;
-    margin-top: 24px;
-    text-align: center;
-}
-
-.individual-featured-work:nth-child(3n) {
-    margin: 0;
-    width: 31%;
-}
-
-/* Footer Styles */
-
-.social-media-menu li {
-	float:left;
-	margin:0 5px;
-	text-indent:-10000px;
-	list-style-type:none;
-}
-
 /* blog post on homepage */
-.recent-posts {
-    clear: both;
-    margin: 100px 0 0;
-    overflow: hidden;
-}
-
-.blog-post {
-	width: 44.75%;
-	padding-right: 50px;
-	float: left;
-}
 .blog-post h4 {
-	font: 16px 'Montserrat';
+	font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
 	color: #a6a6a6;
 	text-transform: uppercase;
-	margin-top: 0;
+	margin: 2em 0 .5em;
 }
-.blog-post h2 {
-	font: 700 24px 'Montserrat';
-	margin: 36px 0;
+.blog-post h3 {
+	font-size: 1.5em;
 }
-.blog-post .read-more-link {
-	font: 700 15px 'Montserrat';
+.read-more-link {
+    font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
 	color: #45ac9d;
 	text-transform: uppercase;
 }
 
-/* Case Studies */
+/* Featured work on homepage */
+.featured-content {
+	width: 90%;
+	max-width: 960px;
+	margin: 0 auto;
+ }
+ 
+ .featured-work {
+	 overflow:auto;
+ }
+ 
+ .featured-work h4 {
+	 font-family:'Montserrat', sans-serif;
+	 text-transform:uppercase;
+	 text-align:center;
+	 margin:0 0 40px;
+ }
+ 
+ .featured-work ul {
+	 margin:0;
+ }
 
+ .individual-featured-work {
+	list-style-type: none;
+	text-align: center;
+ }
+ .individual-featured-work h3 {
+	 font-size: 18px;
+	 font-weight: normal;
+	 margin-top: 24px;
+	 text-align: center;
+ }
+ 
+/*Case Studies*/
 article.case-study {
+	margin: 2.5em 0 0;
     clear: both;
-    margin: 40px 0 0;
 }
-
-aside.case-study-sidebar {
-float: left;
-width: 314px;
-margin: 0 40px 0 0;
+.case-study h2 {
+    font: 700 1.5em/1.5 'Open Sans Semibold';
 }
-
-aside.case-study-sidebar h5 {
+.case-study h4 {
+    font: 400 .875em/1.25 'Open Sans';
+    margin: 1em 0;
+}
+.case-study h4 span {
+    color: #878787;
+}
+.case-study-sidebar h5 {
     color: #999;
     font-size: 16px;
     font-weight: normal;
     line-height: 1.33333;
     margin: 0 0 12px;
 }
-
-aside.case-study-sidebar h6 {
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 1.5;
-    margin: 0 0 50px;
+.case-study-sidebar p {
+    margin: 2em 0;
 }
-
-div.case-study-images {
-	float:left;
-	width:606px;
+.case-study-images {
+	margin-top: 2.5rem;
 }
-
-div.case-study-images img {
-    border: 1px solid #dddddd;
-    margin-bottom: 100px;
+.case-study-images img {
+    width: 100%;
+	margin-bottom: 3.125em;
+	border: 1px solid #dddddd;
 }
+/*END Case Studies*/
 
-
+/* Media Queries */
+@media (min-width: 768px) {
+    .blog-post {
+    	width: 50%;
+    	float: left;
+        margin-bottom: 2em;
+    }
+    aside.case-study-sidebar {
+        float: left;
+        width: 34%;
+        margin: 0 6% 0 0;
+    }
+    div.case-study-images {
+        float: left;
+        width: 60%;
+	}
+	
+	.individual-featured-work {
+		float: left;
+		margin: 0 3% 0 0;
+		width: 31%;
+	}
+   
+	.individual-featured-work:nth-child(3n) {
+	   margin: 0;
+	   width: 31%;
+   }
+}
