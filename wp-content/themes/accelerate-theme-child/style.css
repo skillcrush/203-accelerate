@@ -23,11 +23,7 @@
 }
 
 /* blog post on homepage */
-.blog-post {
-	width: 50%;
-	float: left;
-    margin-bottom: 2em;
-}
+
 .blog-post h4 {
 	font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
 	color: #a6a6a6;
@@ -41,4 +37,13 @@
     font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
 	color: #45ac9d;
 	text-transform: uppercase;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .blog-post {
+    	width: 50%;
+    	float: left;
+        margin-bottom: 2em;
+	}
 }
