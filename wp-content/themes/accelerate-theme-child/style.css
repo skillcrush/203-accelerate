@@ -40,7 +40,6 @@
 
 /*Case Studies*/
 .case-study {
-	margin: 2.5em 0 0;
     clear: both;
 }
 .case-study h2 {
@@ -55,6 +54,9 @@
 }
 .case-study-sidebar p {
     margin: 2em 0;
+}
+div.case-study-images {
+	margin-top: 3em;
 }
 div.case-study-images img {
     width: 100%;
