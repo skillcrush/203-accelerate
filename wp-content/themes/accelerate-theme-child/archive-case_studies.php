@@ -16,7 +16,7 @@ get_header(); ?>
 			$size = "full";
 			$services = get_field('services'); ?>
 
-		<article class="case-study">
+		<article class="case-study clearfix">
 			<aside class="case-study-sidebar">
 				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 				<h4><?php echo $services; ?></h4>
