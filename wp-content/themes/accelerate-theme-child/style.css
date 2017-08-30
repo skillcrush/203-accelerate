@@ -24,22 +24,19 @@
 
 /* featured work on homepage */
 .featured-work .site-content {
-    display: block;
-    margin: 3em auto;
+    margin: 9em auto;
 }
 .featured-work h4 {
-    font-size: 16px;
-    font-family: 'Montserrat';
+    font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
 	text-align: center;
 	text-transform: uppercase;
-	margin-bottom: 36px;
+	margin-bottom: 2.25em;
 }
 .homepage-featured-work {
 	list-style: none;
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 	text-align: center;
-	display: table;
 	width: 100%;
 }
 .individual-featured-work {
@@ -49,9 +46,7 @@
 	display: block;
 }
 .individual-featured-work h3 {
-    font-size: 16px;
-    font-family: 'Open Sans';
-    font-weight: 500;
+    font: 500 1em/1.75 'Open Sans', Arial, sans-serif;
 }
 
 /* blog post on homepage */
@@ -99,9 +94,15 @@ div.case-study-images img {
 
 /* Media Queries */
 @media (min-width: 768px) {
+    .featured-work .site-content {
+        margin: auto auto 3em;
+    }
     .individual-featured-work {
-    	display: table-cell;
+    	float: left;
         padding: 0 .5em;
+    }
+    .individual-featured-work {
+        width: 33%;
     }
     .blog-post {
     	width: 50%;
