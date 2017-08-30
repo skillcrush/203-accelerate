@@ -22,6 +22,38 @@
 	background: none repeat scroll 0 0 #45ac9d;
 }
 
+/* featured work on homepage */
+.featured-work .site-content {
+    display: block;
+    margin: 3em auto;
+}
+.featured-work h4 {
+    font-size: 16px;
+    font-family: 'Montserrat';
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 36px;
+}
+.homepage-featured-work {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	display: table;
+	width: 100%;
+}
+.individual-featured-work {
+    margin-bottom: 2em;
+}
+.individual-featured-work a {
+	display: block;
+}
+.individual-featured-work h3 {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    font-weight: 500;
+}
+
 /* blog post on homepage */
 .blog-post h4 {
 	font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
@@ -38,41 +70,8 @@
 	text-transform: uppercase;
 }
 
-/* Featured work on homepage */
-.featured-content {
-	width: 90%;
-	max-width: 960px;
-	margin: 0 auto;
- }
- 
- .featured-work {
-	 overflow:auto;
- }
- 
- .featured-work h4 {
-	 font-family:'Montserrat', sans-serif;
-	 text-transform:uppercase;
-	 text-align:center;
-	 margin:0 0 40px;
- }
- 
- .featured-work ul {
-	 margin:0;
- }
-
- .individual-featured-work {
-	list-style-type: none;
-	text-align: center;
- }
- .individual-featured-work h3 {
-	 font-size: 18px;
-	 font-weight: normal;
-	 margin-top: 24px;
-	 text-align: center;
- }
- 
 /*Case Studies*/
-article.case-study {
+.case-study {
 	margin: 2.5em 0 0;
     clear: both;
 }
@@ -86,26 +85,10 @@ article.case-study {
 .case-study h4 span {
     color: #878787;
 }
-.case-study-sidebar h5 {
-    color: #999;
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 1.33333;
-    margin: 0 0 12px;
-}
-.case-study-sidebar h6 {
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 1.5;
-    margin: 0 0 50px;
-}
 .case-study-sidebar p {
     margin: 2em 0;
 }
-.case-study-images {
-	margin-top: 2.5rem;
-}
-.case-study-images img {
+div.case-study-images img {
     width: 100%;
 	margin-bottom: 3.125em;
 	border: 1px solid #dddddd;
@@ -114,6 +97,10 @@ article.case-study {
 
 /* Media Queries */
 @media (min-width: 768px) {
+    .individual-featured-work {
+    	display: table-cell;
+        padding: 0 .5em;
+    }
     .blog-post {
     	width: 50%;
     	float: left;
@@ -127,16 +114,5 @@ article.case-study {
     div.case-study-images {
         float: left;
         width: 60%;
-	}
-	
-	.individual-featured-work {
-		float: left;
-		margin: 0 3% 0 0;
-		width: 31%;
-	}
-   
-	.individual-featured-work:nth-child(3n) {
-	   margin: 0;
-	   width: 31%;
-   }
+    }
 }
