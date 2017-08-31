@@ -24,7 +24,7 @@
 
 /* featured work on homepage */
 .featured-work .site-content {
-    margin: 9em auto;
+    margin: 6em auto;
 }
 .featured-work h4 {
     font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
@@ -95,14 +95,18 @@ div.case-study-images img {
 /* Media Queries */
 @media (min-width: 768px) {
     .featured-work .site-content {
+        display: block;
         margin: auto auto 3em;
     }
     .individual-featured-work {
     	float: left;
-        padding: 0 .5em;
     }
     .individual-featured-work {
-        width: 33%;
+        width: 32%;
+        margin-right: 2%;
+    }
+    li.individual-featured-work:last-of-type {
+        margin-right: 0;
     }
     .blog-post {
     	width: 50%;
