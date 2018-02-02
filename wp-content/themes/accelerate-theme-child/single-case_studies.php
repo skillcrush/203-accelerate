@@ -50,8 +50,8 @@ get_header(); ?>
 	</div><!-- .main-content -->
 </div><!-- #primary -->
 
-<div id="navigation" class="container">
+<nav id="navigation" class="container">
 	<div class="left"><a href="<?php echo site_url('/case-studies/') ?>">&larr; <span>Back to Work</span></a></div>
-</div>
+</nav>
 
 <?php get_footer(); ?>
