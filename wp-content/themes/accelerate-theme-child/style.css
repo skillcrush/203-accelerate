@@ -10,8 +10,6 @@
  Text Domain:  accelerate-theme-child
 */
 
-@import url("../accelerate-theme/style.css");
-
 .home-page {
     background: url("img/taxi-photo.jpg") no-repeat scroll right center / cover rgba(0, 0, 0, 0);
 }
