@@ -671,7 +671,7 @@ a.button, a.button:link {
 	   transition: all 0.5s ease;
 	   background: #eeeeee;
    }
-.blog .site-content {
+   .blog .site-content, .single .site-content, .sidebar {
 	   display: -webkit-box;
 	   display: -moz-box;
 	   display: -ms-flexbox;
