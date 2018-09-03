@@ -10,7 +10,19 @@ Tags:     	light, dark, two-columns, right-sidebar, responsive-layout, accessibi
 Text Domain:  accelerate-theme-child
 */
 
+/* HOMEPAGE STYLES */
+.home-page {
+    background: url("img/taxi-photo.jpg") no-repeat scroll right center / cover rgba(0, 0, 0, 0);
+}
 
-body{
-  background-color: #43ab21;
+
+/* NAVIGATION BAR STYLES */
+#masthead {
+  background: none repeat scroll 0 0 #45ac9d;
+}
+
+
+/* BUTTON STYLE */
+.button {
+		background: #45ac9d;
 }
