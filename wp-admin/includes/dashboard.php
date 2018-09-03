@@ -24,6 +24,18 @@ function wp_dashboard_setup() {
 
 	/* Register Widgets and Controls */
 
+	// Try Gutenberg
+
+	// If Gutenberg isn't activated, only show the panel to users who can install and activate it.
+	$plugins = get_plugins();
+	if ( is_plugin_inactive( 'gutenberg/gutenberg.php' ) && ! current_user_can( 'install_plugins' ) ) {
+		remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
+	}
+	// If Gutenberg is activated, only show it to users who can use it.
+	if ( is_plugin_active( 'gutenberg/gutenberg.php' ) && ! current_user_can( 'edit_posts' ) ) {
+		remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
+	}
+
 	$response = wp_check_browser_version();
 
 	if ( $response && $response['upgrade'] ) {
@@ -48,7 +60,7 @@ function wp_dashboard_setup() {
 
 	// QuickPress Widget
 	if ( is_blog_admin() && current_user_can( get_post_type_object( 'post' )->cap->create_posts ) ) {
-		$quick_draft_title = sprintf( '<span class="hide-if-no-js">%1$s</span> <span class="hide-if-js">%2$s</span>', __( 'Quick Draft' ), __( 'Drafts' ) );
+		$quick_draft_title = sprintf( '<span class="hide-if-no-js">%1$s</span> <span class="hide-if-js">%2$s</span>', __( 'Quick Draft' ), __( 'Your Recent Drafts' ) );
 		wp_add_dashboard_widget( 'dashboard_quick_press', $quick_draft_title, 'wp_dashboard_quick_press' );
 	}
 
@@ -277,9 +289,9 @@ function wp_dashboard_right_now() {
 		<li class="comment-count"><a href="edit-comments.php"><?php echo $text; ?></a></li>
 		<?php
 		$moderated_comments_count_i18n = number_format_i18n( $num_comm->moderated );
-		/* translators: Number of comments in moderation */
+		/* translators: %s: number of comments in moderation */
 		$text = sprintf( _nx( '%s in moderation', '%s in moderation', $num_comm->moderated, 'comments' ), $moderated_comments_count_i18n );
-		/* translators: Number of comments in moderation */
+		/* translators: %s: number of comments in moderation */
 		$aria_label = sprintf( _nx( '%s comment in moderation', '%s comments in moderation', $num_comm->moderated, 'comments' ), $moderated_comments_count_i18n );
 		?>
 		<li class="comment-mod-count<?php
@@ -392,12 +404,12 @@ function wp_network_dashboard_right_now() {
 	$c_users = get_user_count();
 	$c_blogs = get_blog_count();
 
-	/* translators: 1: Number of users on the network */
+	/* translators: %s: number of users on the network */
 	$user_text = sprintf( _n( '%s user', '%s users', $c_users ), number_format_i18n( $c_users ) );
-	/* translators: 1: Number of sites on the network */
+	/* translators: %s: number of sites on the network */
 	$blog_text = sprintf( _n( '%s site', '%s sites', $c_blogs ), number_format_i18n( $c_blogs ) );
 
-	/* translators: 1: Text indicating the number of sites on the network, 2: Text indicating the number of users on the network */
+	/* translators: 1: text indicating the number of sites on the network, 2: text indicating the number of users on the network */
 	$sentence = sprintf( __( 'You have %1$s and %2$s.' ), $blog_text, $user_text );
 
 	if ( $actions ) {
@@ -419,7 +431,7 @@ function wp_network_dashboard_right_now() {
 		 * Fires in the Network Admin 'Right Now' dashboard widget
 		 * just before the user and site search form fields.
 		 *
-		 * @since MU
+		 * @since MU (3.0.0)
 		 *
 		 * @param null $unused
 		 */
@@ -445,14 +457,14 @@ function wp_network_dashboard_right_now() {
 	/**
 	 * Fires at the end of the 'Right Now' widget in the Network Admin dashboard.
 	 *
-	 * @since MU
+	 * @since MU (3.0.0)
 	 */
 	do_action( 'mu_rightnow_end' );
 
 	/**
 	 * Fires at the end of the 'Right Now' widget in the Network Admin dashboard.
 	 *
-	 * @since MU
+	 * @since MU (3.0.0)
 	 */
 	do_action( 'mu_activity_box_end' );
 }
@@ -565,9 +577,9 @@ function wp_dashboard_recent_drafts( $drafts = false ) {
 
 	echo '<div class="drafts">';
 	if ( count( $drafts ) > 3 ) {
-		echo '<p class="view-all"><a href="' . esc_url( admin_url( 'edit.php?post_status=draft' ) ) . '" aria-label="' . __( 'View all drafts' ) . '">' . _x( 'View all', 'drafts' ) . "</a></p>\n";
+		echo '<p class="view-all"><a href="' . esc_url( admin_url( 'edit.php?post_status=draft' ) ) . '">' . __( 'View all drafts' ) . "</a></p>\n";
  	}
-	echo '<h2 class="hide-if-no-js">' . __( 'Drafts' ) . "</h2>\n<ul>";
+	echo '<h2 class="hide-if-no-js">' . __( 'Your Recent Drafts' ) . "</h2>\n<ul>";
 
 	$drafts = array_slice( $drafts, 0, 3 );
 	foreach ( $drafts as $draft ) {
@@ -1114,7 +1126,7 @@ function wp_dashboard_events_news() {
 			printf(
 				'<a href="%1$s" target="_blank">%2$s <span class="screen-reader-text">%3$s</span><span aria-hidden="true" class="dashicons dashicons-external"></span></a>',
 				/* translators: If a Rosetta site exists (e.g. https://es.wordpress.org/news/), then use that. Otherwise, leave untranslated. */
-				esc_url( __( 'https://wordpress.org/news/' ) ),
+				esc_url( _x( 'https://wordpress.org/news/', 'Events and News dashboard widget' ) ),
 				__( 'News' ),
 				/* translators: accessibility text */
 				__( '(opens in a new window)' )
@@ -1207,7 +1219,7 @@ function wp_print_community_events_templates() {
 
 	<script id="tmpl-community-events-attend-event-near" type="text/template">
 		<?php printf(
-			/* translators: %s is a placeholder for the name of a city. */
+			/* translators: %s: the name of a city */
 			__( 'Attend an upcoming event near %s.' ),
 			'<strong>{{ data.location.description }}</strong>'
 		); ?>
@@ -1258,7 +1270,7 @@ function wp_print_community_events_templates() {
 
 			<# } else { #>
 				<?php printf(
-					/* translators: meetup organization documentation URL. */
+					/* translators: %s: meetup organization documentation URL */
 					__( 'There aren&#8217;t any events scheduled near you at the moment. Would you like to <a href="%s">organize one</a>?' ),
 					__( 'https://make.wordpress.org/community/handbook/meetup-organizer/welcome/' )
 				); ?>
@@ -1403,7 +1415,7 @@ function wp_dashboard_quota() {
 	<ul>
 		<li class="storage-count">
 			<?php $text = sprintf(
-				/* translators: number of megabytes */
+				/* translators: %s: number of megabytes */
 				__( '%s MB Space Allowed' ),
 				number_format_i18n( $quota )
 			);
@@ -1459,7 +1471,7 @@ function wp_dashboard_browser_nag() {
 		}
 		$notice .= "<p class='browser-update-nag{$browser_nag_class}'>{$msg}</p>";
 
-		$browsehappy = 'http://browsehappy.com/';
+		$browsehappy = 'https://browsehappy.com/';
 		$locale = get_user_locale();
 		if ( 'en_US' !== $locale )
 			$browsehappy = add_query_arg( 'locale', $locale, $browsehappy );
@@ -1509,12 +1521,20 @@ function wp_check_browser_version() {
 	$key = md5( $_SERVER['HTTP_USER_AGENT'] );
 
 	if ( false === ($response = get_site_transient('browser_' . $key) ) ) {
+		// include an unmodified $wp_version
+		include( ABSPATH . WPINC . '/version.php' );
+
+		$url = 'http://api.wordpress.org/core/browse-happy/1.1/';
 		$options = array(
-			'body'			=> array( 'useragent' => $_SERVER['HTTP_USER_AGENT'] ),
-			'user-agent'	=> 'WordPress/' . get_bloginfo( 'version' ) . '; ' . home_url()
+			'body'       => array( 'useragent' => $_SERVER['HTTP_USER_AGENT'] ),
+			'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url( '/' )
 		);
 
-		$response = wp_remote_post( 'http://api.wordpress.org/core/browse-happy/1.1/', $options );
+		if ( wp_http_supports( array( 'ssl' ) ) ) {
+			$url = set_url_scheme( $url, 'https' );
+		}
+
+		$response = wp_remote_post( $url, $options );
 
 		if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) )
 			return false;
@@ -1559,13 +1579,14 @@ function wp_welcome_panel() {
 	<p class="about-description"><?php _e( 'We&#8217;ve assembled some links to get you started:' ); ?></p>
 	<div class="welcome-panel-column-container">
 	<div class="welcome-panel-column">
-		<?php if ( current_user_can( 'customize' ) ): ?>
+		<?php if ( current_user_can( 'customize' ) ) : ?>
 			<h3><?php _e( 'Get Started' ); ?></h3>
 			<a class="button button-primary button-hero load-customize hide-if-no-customize" href="<?php echo wp_customize_url(); ?>"><?php _e( 'Customize Your Site' ); ?></a>
 		<?php endif; ?>
 		<a class="button button-primary button-hero hide-if-customize" href="<?php echo admin_url( 'themes.php' ); ?>"><?php _e( 'Customize Your Site' ); ?></a>
 		<?php if ( current_user_can( 'install_themes' ) || ( current_user_can( 'switch_themes' ) && count( wp_get_themes( array( 'allowed' => true ) ) ) > 1 ) ) : ?>
-			<p class="hide-if-no-customize"><?php printf( __( 'or, <a href="%s">change your theme completely</a>' ), admin_url( 'themes.php' ) ); ?></p>
+			<?php $themes_link = current_user_can( 'customize' ) ? add_query_arg( 'autofocus[panel]', 'themes', admin_url( 'customize.php' ) ) : admin_url( 'themes.php' ); ?>
+			<p class="hide-if-no-customize"><?php printf( __( 'or, <a href="%s">change your theme completely</a>' ), $themes_link ); ?></p>
 		<?php endif; ?>
 	</div>
 	<div class="welcome-panel-column">
@@ -1607,6 +1628,143 @@ function wp_welcome_panel() {
 		</ul>
 	</div>
 	</div>
+	</div>
+	<?php
+}
+
+/**
+ * Displays a Try Gutenberg Panel, to introduce people to Gutenberg
+ *
+ * @since 4.9.8
+ */
+function wp_try_gutenberg_panel() {
+	$plugins = get_plugins();
+	$action = $url = $classes = '';
+	$classic_action = $classic_url = $classic_classes = '';
+
+	if ( current_user_can( 'install_plugins' ) ) {
+		if ( empty( $plugins['gutenberg/gutenberg.php'] ) ) {
+			if ( get_filesystem_method( array(), WP_PLUGIN_DIR ) === 'direct' ) {
+				$action = __( 'Install Gutenberg' );
+				$url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=gutenberg' ), 'install-plugin_gutenberg' );
+				$classes = ' install-now';
+			}
+		} else if ( is_plugin_inactive( 'gutenberg/gutenberg.php' ) ) {
+			$action = __( 'Activate Gutenberg' );
+			$url = wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=gutenberg/gutenberg.php&from=try-gutenberg' ), 'activate-plugin_gutenberg/gutenberg.php' );
+			$classes = ' activate-now';
+		}
+
+		if ( empty( $plugins['classic-editor/classic-editor.php'] ) ) {
+			if ( get_filesystem_method( array(), WP_PLUGIN_DIR ) === 'direct' ) {
+				$classic_action = __( 'Install the Classic Editor' );
+				$classic_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=classic-editor' ), 'install-plugin_classic-editor' );
+				$classic_classes = ' install-now';
+			}
+		} else if ( is_plugin_inactive( 'classic-editor/classic-editor.php' ) ) {
+			$classic_action = __( 'Activate the Classic Editor' );
+			$classic_url = wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=classic-editor/classic-editor.php&from=try-gutenberg' ), 'activate-plugin_classic-editor/classic-editor.php' );
+			$classic_classes = ' activate-now';
+		} else {
+			$classic_action = __( 'The Classic Editor is activated' );
+			$classic_url = wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=classic-editor/classic-editor.php&from=try-gutenberg' ), 'activate-plugin_classic-editor/classic-editor.php' );;
+			$classic_classes = ' button-disabled install-now updated-message';
+		}
+	}
+
+	if ( current_user_can( 'edit_posts' ) && is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
+		$action = __( 'Try Gutenberg' );
+		$url = admin_url( 'admin.php?page=gutenberg' );
+	}
+
+	?>
+	<div class="try-gutenberg-panel-content">
+		<h2><?php _e( 'A new, modern publishing experience is coming soon.' ); ?></h2>
+
+		<p class="about-description"><?php _e( "Take your words, media, and layout in new directions with Gutenberg, the WordPress editor we're currently building." ); ?></p>
+
+		<hr />
+
+		<div class="try-gutenberg-panel-column-container">
+			<div class="try-gutenberg-panel-column try-gutenberg-panel-image-column">
+				<picture>
+					<source srcset="about:blank" media="(max-width: 1024px)">
+					<img src="https://s.w.org/images/core/gutenberg-screenshot.png?<?php echo date( 'Ymd' ); ?>" alt="<?php esc_attr_e( 'Screenshot from the Gutenberg interface' ); ?>" />
+				</picture>
+			</div>
+			<div class="try-gutenberg-panel-column plugin-card-gutenberg">
+
+				<div>
+					<h3><?php _e( 'Test the new editor today.' ); ?></h3>
+
+					<p>
+						<?php _e( "You can take Gutenberg for a spin (and share your feedback, if you’d like) before we officially release it, by installing it as a plugin." ); ?>
+						<?php
+							printf(
+								/* translators: 1: Gutenberg call for testing handbook link, 2: Gutenberg GitHub repository issues link, 3: Gutenberg GitHub repository CONTRIBUTING.md link */
+								__( 'You can help by <a href="%1$s">testing</a>, <a href="%2$s">filing bugs</a>, or contributing on the <a href="%3$s">GitHub repository</a>.' ),
+								'https://make.wordpress.org/test/handbook/call-for-testing/gutenberg-testing/',
+								'https://github.com/WordPress/gutenberg/issues',
+								'https://github.com/WordPress/gutenberg/blob/master/CONTRIBUTING.md'
+							);
+						?>
+					</p>
+				</div>
+
+				<div class="try-gutenberg-action">
+					<?php if ( $action ) { ?>
+						<p><a class="button button-primary button-hero<?php echo $classes; ?>" href="<?php echo esc_url( $url ); ?>" data-name="<?php esc_attr_e( 'Gutenberg' ); ?>" data-slug="gutenberg"><?php echo $action; ?></a></p>
+					<?php } ?>
+
+					<p>
+						<?php
+							$learnmore = sprintf(
+								/* translators: Link to https://wordpress.org/gutenberg/ */
+								__( '<a href="%s">Learn more about Gutenberg</a>' ),
+								__( 'https://wordpress.org/gutenberg/' )
+							);
+
+							/**
+							 * Filters the "Learn more" link in the Try Gutenberg panel.
+							 *
+							 * It allows hosts or site owners to change the link, to provide extra
+							 * information about Gutenberg, specific to their service.
+							 *
+							 * WARNING: This filter will only exist in the 4.9.x series, it will not be
+							 * added to WordPress 5.0 and later.
+							 *
+							 * @since 4.9.8
+							 */
+							echo apply_filters( 'try_gutenberg_learn_more_link', $learnmore );
+						?>
+					</p>
+				</div>
+			</div>
+
+			<div class="try-gutenberg-panel-column plugin-card-classic-editor">
+
+				<div>
+					<h3><?php _e( 'Not quite ready?' ); ?></h3>
+
+					<p>
+						<?php _e( 'The new editor will be enabled by default in the next major release of WordPress. If you’re not sure how compatible your current themes and plugins are, we’ve got you covered.' ); ?>
+						<?php
+							printf(
+								/* translators: Link to the Classic Editor plugin page */
+								__( 'Install the <a href="%s">Classic Editor plugin</a> to keep using the current editor until you’re ready to make the switch.' ),
+								__( 'https://wordpress.org/plugins/classic-editor' )
+							);
+						?>
+					</p>
+				</div>
+
+				<?php if ( $classic_action ) { ?>
+					<div class="try-gutenberg-action">
+						<p><a class="button button-secondary button-hero<?php echo $classic_classes; ?>" href="<?php echo esc_url( $classic_url ); ?>" data-name="<?php esc_attr_e( 'Classic Editor' ); ?>" data-slug="classic-editor"><?php echo $classic_action; ?></a></p>
+					</div>
+				<?php } ?>
+			</div>
+		</div>
 	</div>
 	<?php
 }
