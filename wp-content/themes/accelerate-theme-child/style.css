@@ -19,6 +19,7 @@ Text Domain:  accelerate-theme-child
 /* NAVIGATION BAR STYLES */
 #masthead {
   background: none repeat scroll 0 0 #45ac9d;
+  padding:5em;
 }
 
 
