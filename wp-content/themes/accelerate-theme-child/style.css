@@ -27,6 +27,27 @@ Text Domain:  accelerate-theme-child
 		background: #45ac9d;
 }
 
+/*HOMPAGE FEATURED POST STYLING */
+.featured-work h2{
+  text-transform: uppercase;
+  text-align: center;
+  color:#3B3B3B;
+}
+li.individual-featured-work{
+  list-style-type: none;
+  margin:0;
+  padding:0;
+  float:left;
+}
+li.individual-featured-work h3{
+  color: #3B3B3B !important;
+  margin:3em;
+}
+figure img{
+  display:block;
+  margin:1em;
+}
+
 /* HOMEPAGE BLOG POST STYLING */
 .blog-post {
 	width: 50%;
