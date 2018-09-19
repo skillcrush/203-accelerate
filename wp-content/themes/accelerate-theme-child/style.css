@@ -32,21 +32,43 @@ Text Domain:  accelerate-theme-child
   text-transform: uppercase;
   text-align: center;
   color:#3B3B3B;
+  font-size: 1em;
+  padding-bottom: 1em;
+}
+ul.homepage-featured-work{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding-bottom: 1em;
+  max-width: 1000px;
 }
 li.individual-featured-work{
   list-style-type: none;
   margin:0;
-  padding:0;
-  float:left;
+  padding:0.55em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 250px;
 }
 li.individual-featured-work h3{
   color: #3B3B3B !important;
-  margin:3em;
+  text-align: center;
+  font-weight: 400;
+  font-size: 1em;
+  padding: 1em;
+  margin:0;
+  line-height: 1.5em;
 }
 figure img{
   display:block;
-  margin:1em;
+  width:100%;
 }
+
 
 /* HOMEPAGE BLOG POST STYLING */
 .blog-post {
@@ -58,7 +80,7 @@ figure img{
     font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
     color: #a6a6a6;
     text-transform: uppercase;
-    margin: 2em 0 .5em;
+    margin: 2em 0 0.5em;
 }
 .blog-post h3 {
 	font-size: 1.5em;
