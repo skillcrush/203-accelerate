@@ -1,0 +1,135 @@
+[
+    {
+        "name": "codeinwp/themeisle-sdk",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Codeinwp/themeisle-sdk.git",
+            "reference": "9d866559c6090f0e7e70fe3e5a4be8672461a11a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/9d866559c6090f0e7e70fe3e5a4be8672461a11a",
+            "reference": "9d866559c6090f0e7e70fe3e5a4be8672461a11a",
+            "shasum": ""
+        },
+        "time": "2018-02-16 16:31:29",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "load.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "ThemeIsle team",
+                "email": "friends@themeisle.com",
+                "homepage": "https://themeisle.com"
+            }
+        ],
+        "description": "ThemeIsle SDK ",
+        "homepage": "https://github.com/Codeinwp/themeisle-sdk",
+        "keywords": [
+            "wordpress"
+        ]
+    },
+    {
+        "name": "kucrut/icon-picker",
+        "version": "v0.5.0",
+        "version_normalized": "0.5.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kucrut/wp-icon-picker.git",
+            "reference": "8bbe9dfaff674e68acc13dc5e19dd401ae3a1006"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kucrut/wp-icon-picker/zipball/8bbe9dfaff674e68acc13dc5e19dd401ae3a1006",
+            "reference": "8bbe9dfaff674e68acc13dc5e19dd401ae3a1006",
+            "shasum": ""
+        },
+        "require": {
+            "composer/installers": "~1.0"
+        },
+        "require-dev": {
+            "wp-coding-standards/wpcs": "^0.10.0"
+        },
+        "time": "2017-02-04 14:35:29",
+        "type": "wordpress-plugin",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Dzikri Aziz",
+                "email": "kvcrvt@gmail.com",
+                "homepage": "http://kucrut.org/"
+            }
+        ],
+        "description": "Pick an icon of your choice.",
+        "homepage": "https://github.com/kucrut/wp-icon-picker",
+        "keywords": [
+            "dashicons",
+            "elusive",
+            "font-awesome",
+            "foundation-icons",
+            "genericons",
+            "icons",
+            "plugin",
+            "wordpress"
+        ],
+        "abandoned": true
+    },
+    {
+        "name": "kucrut/menu-item-custom-fields",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kucrut/wp-menu-item-custom-fields.git",
+            "reference": "a201bb631f864819c5ebd73ab1252d673815fac0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kucrut/wp-menu-item-custom-fields/zipball/a201bb631f864819c5ebd73ab1252d673815fac0",
+            "reference": "a201bb631f864819c5ebd73ab1252d673815fac0",
+            "shasum": ""
+        },
+        "require": {
+            "composer/installers": "~1.0"
+        },
+        "require-dev": {
+            "wp-coding-standards/wpcs": "^0.10.0"
+        },
+        "time": "2017-02-05 07:11:32",
+        "type": "wordpress-plugin",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Dzikri Aziz",
+                "email": "kvcrvt@gmail.com",
+                "homepage": "https://kucrut.org/"
+            }
+        ],
+        "description": "Easily add custom fields to nav menu items.",
+        "homepage": "https://github.com/kucrut/wp-menu-item-custom-fields",
+        "keywords": [
+            "custom-fields",
+            "menu",
+            "plugin",
+            "wordpress"
+        ]
+    }
+]

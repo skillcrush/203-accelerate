@@ -144,3 +144,25 @@ div.case-study-images img {
 	width: 100%;
 	height: auto;
 }
+
+
+/* SOCIAL MEDIA NAVIGATION MENU STYLING */
+ul#menu-social-media-nav.social-media-menu{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+li#menu-item-13, li#menu-item-14, li#menu-item-47354{
+  list-style-type: none;
+  margin: 0 0.25em;
+  display: inline-block;
+}
+li#menu-item-13 a i, li#menu-item-14 a i, li#menu-item-47354 a i{
+  color:#fff;
+  background: #3B3B3B;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  padding:3px;
+  margin:0;
+}
