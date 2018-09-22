@@ -151,13 +151,14 @@ ul#menu-social-media-nav.social-media-menu{
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  list-style-type: none;
 }
-li#menu-item-13, li#menu-item-14, li#menu-item-47354{
+li#menu-item-11, li#menu-item-12, li#menu-item-47373{
   list-style-type: none;
   margin: 0 0.25em;
   display: inline-block;
 }
-li#menu-item-13 a i, li#menu-item-14 a i, li#menu-item-47354 a i{
+li#menu-item-11 a i, li#menu-item-12 a i, li#menu-item-47373 a i{
   color:#fff;
   background: #3B3B3B;
   border-radius: 50%;
