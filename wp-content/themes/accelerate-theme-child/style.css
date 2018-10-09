@@ -167,3 +167,80 @@ li.menu-item.menu-item-type-custom.menu-item-object-custom{
   padding:5px;
   margin:0;
 }
+
+
+/* CONTACT FORM STYLING */
+div.main-content{
+  margin: 0 auto;
+  max-width: 800px;
+}
+div.main-content h1{
+  margin: 0;
+}
+div.main-content p{
+  margin-top: 0;
+}
+div.nf-form-content{
+
+}
+div.nf-field-element{
+
+}
+div.nf-field-label{
+  margin-bottom: 0 !important;
+}
+div.nf-field-label label{
+  font-weight: 500;
+  padding: 0;
+  font-size: 0.75em;
+}
+.nf-form-fields-required {
+  display: none;
+}
+.ninja-forms-req-symbol {
+  display: none;
+}
+div.textbox-container{
+
+}
+div#nf-field-1-container, div#nf-field-2-container{
+  display: inline-block;
+  width: 48.8%;
+}
+div#nf-field-1-container{
+  margin-right: 1.4%;
+}
+
+
+
+input[type='text'].ninja-forms-field.nf-element[aria-invalid='true'],
+input[type='email'].ninja-forms-field.nf-element[aria-invalid='true'],
+textarea.ninja-forms-field.nf-element[aria-invalid='true']{
+	outline: none !important;
+  border:3px solid #45ac9d;
+  box-shadow: 0 0 10px #45ac9d;
+}
+input[type='button'].ninja-forms-field.nf-element{
+	float: right;
+  background-color: #45ac9d;
+  color: #FFF;
+}
+div.nf-error-msg.nf-error-required-error, div.nf-error-msg.nf-error-invalid-email{
+	color:#45ac9d;
+	margin-left: 5px;
+}
+div.nf-error-msg.nf-error-field-errors{
+	text-align: center;
+  font-weight: 400;
+  color: #000;
+}
+div.nf-form-cont, article.post-entry{
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+div.nf-response-msg{
+
+}
+div.nf-response-msg p{
+  font-weight: 400;
+}
