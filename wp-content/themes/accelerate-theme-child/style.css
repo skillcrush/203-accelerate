@@ -182,12 +182,14 @@ div.main-content p{
   margin-top: 0;
 }
 div.nf-field-label{
-  margin-bottom: 0 !important;
+  margin: 0 !important;
 }
 div.nf-field-label label{
   font-weight: 500;
   padding: 0;
   font-size: 0.75em;
+  line-height:1em;
+  margin: 0;
 }
 .nf-form-fields-required {
   display: none;
@@ -195,16 +197,25 @@ div.nf-field-label label{
 .ninja-forms-req-symbol {
   display: none;
 }
+.nf-error-msg.nf-error-field-errors{
+	display: none;
+}
 .nf-loading-spinner{
   display: none;
 }
-div#nf-field-5-container, div#nf-field-2-container{
-  display: inline-block;
+input, textarea{
+  font-size: 0.75em;
+  font-weight: 400;
+  padding: 0.5em;
+  line-height: 0.75em;
+  margin-top: 0;
 }
-input[type="text"], input[type="email"]{
-  display: inline-block;
+input[type='text'].ninja-forms-field.nf-element:focus,
+input[type='email'].ninja-forms-field.nf-element:focus,
+textarea.ninja-forms-field.nf-element:focus{
+  outline: none !important;
+  border:2px solid #45ac9d;
 }
-
 input[type='text'].ninja-forms-field.nf-element[aria-invalid='true'],
 input[type='email'].ninja-forms-field.nf-element[aria-invalid='true'],
 textarea.ninja-forms-field.nf-element[aria-invalid='true']{
@@ -216,7 +227,7 @@ input[type='button'].ninja-forms-field.nf-element{
 	float: right;
   background-color: #45ac9d;
   color: #FFF;
-  padding:1em 4em;
+  padding:0.75em 3em;
   font-weight: 600;
   letter-spacing: 0.2;
   font-size: 1em;
@@ -226,17 +237,4 @@ div.nf-error-msg.nf-error-required-error, div.nf-error-msg.nf-error-invalid-emai
 	margin-left: 5px;
   font-weight: 400;
   font-size: 0.75em;
-}
-div.nf-error-msg.nf-error-field-errors{
-	display: none;
-}
-div.nf-form-cont, article.post-entry{
-	margin-bottom: 0;
-	padding-bottom: 0;
-}
-div.nf-response-msg{
-
-}
-div.nf-response-msg p{
-  font-weight: 400;
 }
