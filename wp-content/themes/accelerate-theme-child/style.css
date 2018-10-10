@@ -174,8 +174,9 @@ div.main-content{
   margin: 0 auto;
   max-width: 800px;
 }
-div.main-content h1{
+div.main-content h2{
   margin: 0;
+  font-size: 1.5em;
 }
 div.main-content p{
   margin-top: 0;
@@ -194,20 +195,15 @@ div.nf-field-label label{
 .ninja-forms-req-symbol {
   display: none;
 }
-.nf-after-form{
-  visibility: hidden;
+.nf-loading-spinner{
+  display: none;
 }
-
-
-div#nf-field-1-container, div#nf-field-2-container{
+div#nf-field-5-container, div#nf-field-2-container{
   display: inline-block;
-  width: 48.8%;
 }
-div#nf-field-1-container{
-  margin-right: 1.4%;
+input[type="text"], input[type="email"]{
+  display: inline-block;
 }
-
-
 
 input[type='text'].ninja-forms-field.nf-element[aria-invalid='true'],
 input[type='email'].ninja-forms-field.nf-element[aria-invalid='true'],
