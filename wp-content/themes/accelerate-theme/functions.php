@@ -38,8 +38,8 @@ function accelerate_setup() {
 
     // Register Menus
     register_nav_menus( array (
-        'top-nav' => __( 'Top Nav', 'accelerate' ),
-        'social-media'  => __( 'Social Media Nav', 'accelerate' ),
+        'top-nav' /* COMPUTER FRIENDLY NAME */ => __( 'Top Nav' /* HUMAN READABLE NAME */, 'accelerate' ),
+        'social-media' /* COMPUTER FRIENDLY NAME */ => __( 'Social Media Nav' /* HUMAN READABLE NAME */ , 'accelerate' ),
     ) );
 }
 add_action( 'after_setup_theme', 'accelerate_setup' );

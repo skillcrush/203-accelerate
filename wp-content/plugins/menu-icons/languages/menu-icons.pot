@@ -1,0 +1,203 @@
+# Copyright (C) 2016 Dzikri Aziz
+# This file is distributed under the GPLv2.
+msgid ""
+msgstr ""
+"Project-Id-Version: Menu Icons 0.10.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/menu-icons\n"
+"POT-Creation-Date: 2016-05-09 00:02:22+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.3\n"
+
+#: includes/picker.php:75
+msgid "Type"
+msgstr ""
+
+#: includes/picker.php:80 includes/picker.php:178
+msgid "Icon"
+msgstr ""
+
+#: includes/picker.php:128
+msgid "Icon:"
+msgstr ""
+
+#: includes/picker.php:129 includes/settings.php:684
+msgid "Select"
+msgstr ""
+
+#: includes/picker.php:130 includes/settings.php:685
+msgid "Remove"
+msgstr ""
+
+#: includes/settings.php:288
+msgid "<strong>Menu Icons Settings</strong> have been successfully updated."
+msgstr ""
+
+#: includes/settings.php:289
+msgid "<strong>Menu Icons Settings</strong> have been successfully reset."
+msgstr ""
+
+#: includes/settings.php:314
+msgid "Menu Icons Settings"
+msgstr ""
+
+#: includes/settings.php:362
+msgid "Hide Label"
+msgstr ""
+
+#: includes/settings.php:367
+msgid "No"
+msgstr ""
+
+#: includes/settings.php:371
+msgid "Yes"
+msgstr ""
+
+#: includes/settings.php:378
+msgid "Position"
+msgstr ""
+
+#: includes/settings.php:383
+msgid "Before"
+msgstr ""
+
+#: includes/settings.php:387
+msgid "After"
+msgstr ""
+
+#: includes/settings.php:394
+msgid "Vertical Align"
+msgstr ""
+
+#: includes/settings.php:399
+msgid "Super"
+msgstr ""
+
+#: includes/settings.php:403
+msgid "Top"
+msgstr ""
+
+#: includes/settings.php:407
+msgid "Text Top"
+msgstr ""
+
+#: includes/settings.php:411
+msgid "Middle"
+msgstr ""
+
+#: includes/settings.php:415
+msgid "Baseline"
+msgstr ""
+
+#: includes/settings.php:419
+msgid "Text Bottom"
+msgstr ""
+
+#: includes/settings.php:423
+msgid "Bottom"
+msgstr ""
+
+#: includes/settings.php:427
+msgid "Sub"
+msgstr ""
+
+#: includes/settings.php:434
+msgid "Font Size"
+msgstr ""
+
+#: includes/settings.php:445
+msgid "SVG Width"
+msgstr ""
+
+#: includes/settings.php:456
+msgid "Image Size"
+msgstr ""
+
+#: includes/settings.php:496
+msgid "Global"
+msgstr ""
+
+#: includes/settings.php:497
+msgid "Global settings"
+msgstr ""
+
+#: includes/settings.php:502
+msgid "Icon Types"
+msgstr ""
+
+#: includes/settings.php:518
+msgid "Current Menu"
+msgstr ""
+
+#: includes/settings.php:520
+msgid "\"%s\" menu settings"
+msgstr ""
+
+#: includes/settings.php:586 includes/settings.php:608
+msgid "Extensions"
+msgstr ""
+
+#: includes/settings.php:627
+msgid "Discard all changes and reset to default state"
+msgstr ""
+
+#: includes/settings.php:628
+msgid "Reset"
+msgstr ""
+
+#: includes/settings.php:637
+msgid "Save Settings"
+msgstr ""
+
+#: includes/settings.php:683
+msgid "Select Icon"
+msgstr ""
+
+#: includes/settings.php:686
+msgid "Change"
+msgstr ""
+
+#: includes/settings.php:687
+msgid "All"
+msgstr ""
+
+#: includes/settings.php:688
+msgid "Preview"
+msgstr ""
+
+#: includes/settings.php:690
+msgid ""
+"Please note that the actual look of the icons on the front-end will also be "
+"affected by your active theme's style. You can use %s if you need to "
+"override it."
+msgstr ""
+
+#: menu-icons.php:132
+msgid "Menu Icons: No registered icon types found."
+msgstr ""
+
+#: menu-icons.php:161
+msgid ""
+"Looks like Menu Icons was installed via Composer. Please activate Icon "
+"Picker first."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Menu Icons"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://kucrut.org/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Spice up your navigation menus with pretty icons, easily."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Dzikri Aziz"
+msgstr ""

@@ -1,0 +1,246 @@
+/*
+Theme Name:   Accelerate Theme Child
+Theme URI:    http://example.com/accelerate-theme-child/
+Description:  Accelerate Child Theme - Accelerate
+Author:   	Your Name!
+Author URI:   http://example.com
+Template: 	accelerate-theme
+Version:      2.0.0
+Tags:     	light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+Text Domain:  accelerate-theme-child
+*/
+
+/* HOMEPAGE STYLES */
+.home-page {
+    background: url("img/taxi-photo.jpg") no-repeat scroll right center / cover rgba(0, 0, 0, 0);
+}
+
+/* NAVIGATION BAR STYLES */
+#masthead {
+  background: none repeat scroll 0 0 #45ac9d;
+}
+nav#navigation.container{
+  margin-top:3em;
+}
+
+/* HOMEPAGE BUTTON STYLE */
+.button {
+		background: #45ac9d;
+}
+
+/*HOMEPAGE FEATURED POST STYLING */
+.featured-work h2{
+  text-transform: uppercase;
+  text-align: center;
+  color:#3B3B3B;
+  font-size: 1em;
+  padding-bottom: 1em;
+}
+ul.homepage-featured-work{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding-bottom: 1em;
+  max-width: 1000px;
+}
+li.individual-featured-work{
+  list-style-type: none;
+  margin:0;
+  padding:0.55em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 250px;
+}
+li.individual-featured-work h3{
+  color: #3B3B3B !important;
+  text-align: center;
+  font-weight: 400;
+  font-size: 1em;
+  padding: 1em;
+  margin:0;
+  line-height: 1.5em;
+}
+figure img{
+  display:block;
+  width:100%;
+}
+
+
+/* HOMEPAGE BLOG POST STYLING */
+.blog-post {
+	width: 50%;
+	float: left;
+	margin-bottom: 2em;
+}
+.blog-post h4 {
+    font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
+    color: #a6a6a6;
+    text-transform: uppercase;
+    margin: 2em 0 0.5em;
+}
+.blog-post h3 {
+	font-size: 1.5em;
+}
+.read-more-link {
+	font-family: 'Montserrat';
+	font-weight: 700;
+	color: #45ac9d;
+	text-transform: uppercase;
+}
+
+/*CASE STUDY STYLING*/
+article.case-study{
+  width:1000px;
+  padding-bottom: 3em;
+}
+aside.case-study-sidebar{
+  float:left;
+  width:400px;
+  text-align: left;
+  margin-top:5em;
+  font-weight: 400;
+  padding-right: 1.5em;
+}
+aside.case-study-sidebar h2{
+  font-weight: 400;
+  font-size: 1.25em;
+  margin: 0;
+}
+aside.case-study-sidebar h3{
+  color:#a6a6a6;
+  font-weight: 400;
+  font-size: 0.85em;
+  line-height: 2em;
+  margin:0;
+}
+aside.case-study-sidebar h4{
+  font-weight: 400;
+  font-size: 1em;
+  margin:0.5em 0;
+}
+aside.case-study-sidebar p{
+  margin:2em 3em 2em 0;
+  font-weight: 400;
+}
+div.case-study-images{
+  float:left;
+  width: 600px;
+}
+div.case-study-images img{
+  display:block;
+  width:606px;
+  padding:1.5em 3em 1.5em 0;
+}
+aside.case-study-sidebar p.read-more-link{
+  font-weight: 600;
+  font-size: 0.75em;
+}
+div.case-study-images img {
+	width: 100%;
+	height: auto;
+}
+
+
+/* SOCIAL MEDIA NAVIGATION MENU STYLING */
+ul#menu-social-media-nav.social-media-menu{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  list-style-type: none;
+}
+li.menu-item.menu-item-type-custom.menu-item-object-custom{
+  list-style-type: none;
+  margin: 0 0.25em;
+  display: inline-block;
+}
+.social-media-menu li a i{
+  color:#fff;
+  background: #3B3B3B;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  padding:5px;
+  margin:0;
+}
+
+
+/* CONTACT FORM STYLING */
+div.main-content{
+  margin: 0 auto;
+  max-width: 800px;
+}
+div.main-content h1{
+  margin: 0;
+}
+div.main-content p{
+  margin-top: 0;
+}
+div.nf-field-label{
+  margin-bottom: 0 !important;
+}
+div.nf-field-label label{
+  font-weight: 500;
+  padding: 0;
+  font-size: 0.75em;
+}
+.nf-form-fields-required {
+  display: none;
+}
+.ninja-forms-req-symbol {
+  display: none;
+}
+.nf-after-form{
+  visibility: hidden;
+}
+
+
+div#nf-field-1-container, div#nf-field-2-container{
+  display: inline-block;
+  width: 48.8%;
+}
+div#nf-field-1-container{
+  margin-right: 1.4%;
+}
+
+
+
+input[type='text'].ninja-forms-field.nf-element[aria-invalid='true'],
+input[type='email'].ninja-forms-field.nf-element[aria-invalid='true'],
+textarea.ninja-forms-field.nf-element[aria-invalid='true']{
+	outline: none !important;
+  border:3px solid #45ac9d;
+  box-shadow: 0 0 10px #45ac9d;
+}
+input[type='button'].ninja-forms-field.nf-element{
+	float: right;
+  background-color: #45ac9d;
+  color: #FFF;
+  padding:1em 4em;
+  font-weight: 600;
+  letter-spacing: 0.2;
+  font-size: 1em;
+}
+div.nf-error-msg.nf-error-required-error, div.nf-error-msg.nf-error-invalid-email{
+	color:#45ac9d;
+	margin-left: 5px;
+  font-weight: 400;
+  font-size: 0.75em;
+}
+div.nf-error-msg.nf-error-field-errors{
+	display: none;
+}
+div.nf-form-cont, article.post-entry{
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+div.nf-response-msg{
+
+}
+div.nf-response-msg p{
+  font-weight: 400;
+}
