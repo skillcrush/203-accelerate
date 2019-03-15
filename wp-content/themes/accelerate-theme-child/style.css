@@ -52,9 +52,9 @@ Text Domain:  accelerate-theme-child
 
 /* Case Studies Page */
 .case-study-sidebar {
-    width: 300px;
+    width: 35%;
     float: left;
-    padding-right: 30px;
+    margin-right: 8%;
 }
 .case-study-sidebar h2 {
     margin-bottom: 0;
@@ -72,8 +72,12 @@ Text Domain:  accelerate-theme-child
 }
 .case-study-images {
     float: left;
-    width: 650px;
-    /*padding: 0 28px;*/
+    width: 55%;
+    margin: auto;
+}
+div.case-study-image img {
+    width: 100%;
+    height: auto;
 }
 
 /* Homepage Featured Work*/
@@ -86,20 +90,18 @@ Text Domain:  accelerate-theme-child
 .featured-work ul {
     list-style-type: none;
 }
-.site-content {
-    max-width: 1000px;
-}
 .featured-work li {
     float: left;
     text-align: center;
-    padding: 10px;
+    width: 31%;
+    margin-right: 2%;
+}
+.feature-work li:last-of-type {
+    margin-right: 0;
 }
 .homepage-featured-work h3 {
     margin-top: 10px;
     font-size: .85em;
-}
-.individual-featured-item {
-    padding: 0;
 }
 .recent-posts .blog-post {
     clear: both;
