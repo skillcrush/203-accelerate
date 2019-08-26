@@ -1,5 +1,8 @@
 /* global pluploadL10n, plupload, _wpPluploadSettings */
 
+/**
+ * @namespace wp
+ */
 window.wp = window.wp || {};
 
 ( function( exports, $ ) {
@@ -15,6 +18,10 @@ window.wp = window.wp || {};
 	 * The Plupload library provides cross-browser uploader UI integration.
 	 * This object bridges the Plupload API to integrate uploads into the
 	 * WordPress back end and the WordPress media experience.
+	 *
+	 * @class
+	 * @memberOf wp
+	 * @alias wp.Uploader
 	 *
 	 * @param {object} options           The options passed to the new plupload instance.
 	 * @param {object} options.container The id of uploader container.
@@ -198,7 +205,6 @@ window.wp = window.wp || {};
 		/**
 		 * After files were filtered and added to the queue, create a model for each.
 		 *
-		 * @event FilesAdded
 		 * @param {plupload.Uploader} uploader Uploader instance.
 		 * @param {Array}             files    Array of file objects that were added to queue by the user.
 		 */
@@ -340,7 +346,7 @@ window.wp = window.wp || {};
 		}
 	};
 
-	$.extend( Uploader.prototype, {
+	$.extend( Uploader.prototype, /** @lends wp.Uploader.prototype */{
 		/**
 		 * Acts as a shortcut to extending the uploader's multipart_params object.
 		 *
