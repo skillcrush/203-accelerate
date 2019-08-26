@@ -1,3 +1,4 @@
+/*! This file is auto-generated */
 /*
  * Button mixin- creates 3d-ish button effect with correct
  * highlights/shadows, based on a base color.
@@ -41,7 +42,6 @@ input[type=radio]:checked:before {
   background: #c7a589;
   border-color: #b78b66 #ae7d55 #ae7d55;
   color: #fff;
-  -webkit-box-shadow: 0 1px 0 #ae7d55;
   box-shadow: 0 1px 0 #ae7d55;
   text-shadow: 0 -1px 1px #ae7d55, -1px 0 1px #ae7d55, 0 1px 1px #ae7d55, 1px 0 1px #ae7d55;
 }
@@ -50,19 +50,16 @@ input[type=radio]:checked:before {
   background: #ccad93;
   border-color: #ae7d55;
   color: #fff;
-  -webkit-box-shadow: 0 1px 0 #ae7d55;
   box-shadow: 0 1px 0 #ae7d55;
 }
 
 .wp-core-ui .button-primary:focus {
-  -webkit-box-shadow: inset 0 1px 0 #b78b66, 0 0 2px 1px #33b3db;
   box-shadow: inset 0 1px 0 #b78b66, 0 0 2px 1px #33b3db;
 }
 
-.wp-core-ui .button-primary:active {
+.wp-core-ui .button-primary:active, .wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover {
   background: #b78b66;
   border-color: #ae7d55;
-  -webkit-box-shadow: inset 0 2px 0 #ae7d55;
   box-shadow: inset 0 2px 0 #ae7d55;
 }
 
@@ -74,12 +71,10 @@ input[type=radio]:checked:before {
 }
 
 .wp-core-ui .button-primary.button-hero {
-  -webkit-box-shadow: 0 2px 0 #ae7d55 !important;
   box-shadow: 0 2px 0 #ae7d55 !important;
 }
 
 .wp-core-ui .button-primary.button-hero:active {
-  -webkit-box-shadow: inset 0 3px 0 #ae7d55 !important;
   box-shadow: inset 0 3px 0 #ae7d55 !important;
 }
 
@@ -116,9 +111,7 @@ input[type=radio]:checked:before {
 
 /* List tables */
 .wrap .add-new-h2:hover,
-.wrap .page-title-action:hover,
-.tablenav .tablenav-pages a:hover,
-.tablenav .tablenav-pages a:focus {
+.wrap .page-title-action:hover {
   color: #fff;
   background-color: #59524c;
 }
@@ -160,7 +153,7 @@ input[type=radio]:checked:before {
 }
 
 /* Active tabs use a bottom border color that matches the page background color. */
-.about-wrap h2 .nav-tab-active,
+.about-wrap .nav-tab-active,
 .nav-tab-active,
 .nav-tab-active:hover {
   background-color: #f1f1f1;
@@ -377,6 +370,25 @@ ul#adminmenu > li.current > a.current:after {
   background: #6c645c;
 }
 
+/* Admin Bar: recovery mode */
+#wpadminbar #wp-admin-bar-recovery-mode {
+  color: #fff;
+  background-color: #9ea476;
+}
+
+#wpadminbar #wp-admin-bar-recovery-mode .ab-item,
+#wpadminbar #wp-admin-bar-recovery-mode a.ab-item {
+  color: #fff;
+}
+
+#wpadminbar .ab-top-menu > #wp-admin-bar-recovery-mode.hover > .ab-item,
+#wpadminbar.nojq .quicklinks .ab-top-menu > #wp-admin-bar-recovery-mode > .ab-item:focus,
+#wpadminbar:not(.mobile) .ab-top-menu > #wp-admin-bar-recovery-mode:hover > .ab-item,
+#wpadminbar:not(.mobile) .ab-top-menu > #wp-admin-bar-recovery-mode > .ab-item:focus {
+  color: #fff;
+  background-color: #8e946a;
+}
+
 /* Admin Bar: my account */
 #wpadminbar .quicklinks li#wp-admin-bar-my-account.with-avatar > a img {
   border-color: #6c645c;
@@ -419,18 +431,15 @@ ul#adminmenu > li.current > a.current:after {
 }
 
 .details.attachment {
-  -webkit-box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 7px #c7a589;
   box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 7px #c7a589;
 }
 
 .attachment.details .check {
   background-color: #c7a589;
-  -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px #c7a589;
   box-shadow: 0 0 0 1px #fff, 0 0 0 2px #c7a589;
 }
 
 .media-selection .attachment.selection.details .thumbnail {
-  -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 3px #c7a589;
   box-shadow: 0 0 0 1px #fff, 0 0 0 3px #c7a589;
 }
 
