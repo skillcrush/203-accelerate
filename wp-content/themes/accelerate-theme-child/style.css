@@ -45,3 +45,46 @@ Text Domain:  accelerate-theme-child
 	color: #45ac9d;
 	text-transform: uppercase;
 }
+
+/****CASE STUDIES STYLES****/
+
+.case-study {
+    display: flex;
+    font-family: 'Montserrat';
+}
+
+.case-study-sidebar {
+    padding-right: 5em;
+    width: 61%;
+}
+
+.case-study-sidebar h2 {
+    font-weight: 500;
+    font-size: 1.5em;
+    margin: 4em 0 0 0;
+}
+
+.case-study-sidebar h4 {
+    font-weight: 500;
+    font-size: .85em;
+    color: #a6a6a6;
+    margin-top: 0;
+}
+
+.case-study-sidebar span {
+    color:black
+}
+
+.case-study-sidebar p {
+    font-size: 1em;
+}
+
+.case-study-images {
+    padding-top: 2em;
+    width: 100%;
+}
+
+.case-study-images img {
+    padding-bottom: 3em;
+    width: 100%;
+}
