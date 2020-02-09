@@ -64,15 +64,14 @@ Text Domain:  accelerate-theme-child
     margin: 4em 0 0 0;
 }
 
-.case-study-sidebar h4 {
+.case-study-sidebar h3 {
     font-weight: 500;
     font-size: .85em;
-    color: #a6a6a6;
     margin-top: 0;
 }
 
 .case-study-sidebar span {
-    color:black
+    color:#a6a6a6
 }
 
 .case-study-sidebar p {
