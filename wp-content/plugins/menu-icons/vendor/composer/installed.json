@@ -1,0 +1,120 @@
+[
+    {
+        "name": "codeinwp/icon-picker",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Codeinwp/icon-picker.git",
+            "reference": "980abcd0325414f6264ac62320990bf10a3ceb8f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Codeinwp/icon-picker/zipball/980abcd0325414f6264ac62320990bf10a3ceb8f",
+            "reference": "980abcd0325414f6264ac62320990bf10a3ceb8f",
+            "shasum": ""
+        },
+        "require": {
+            "composer/installers": "~1.0"
+        },
+        "require-dev": {
+            "wp-coding-standards/wpcs": "^0.10.0"
+        },
+        "time": "2019-11-15 16:51:01",
+        "type": "wordpress-plugin",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0"
+        ],
+        "description": "Pick an icon of your choice.",
+        "homepage": "https://github.com/codeinwp/icon-picker",
+        "keywords": [
+            "dashicons",
+            "elusive",
+            "font-awesome",
+            "foundation-icons",
+            "genericons",
+            "icons",
+            "plugin",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "codeinwp/menu-item-custom-fields",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Codeinwp/menu-item-custom-fields.git",
+            "reference": "0155ce0f0a959d6f227edcff7d16e2a326d9269b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Codeinwp/menu-item-custom-fields/zipball/0155ce0f0a959d6f227edcff7d16e2a326d9269b",
+            "reference": "0155ce0f0a959d6f227edcff7d16e2a326d9269b",
+            "shasum": ""
+        },
+        "require": {
+            "composer/installers": "~1.0"
+        },
+        "require-dev": {
+            "wp-coding-standards/wpcs": "^0.10.0"
+        },
+        "time": "2018-12-10 16:01:32",
+        "type": "wordpress-plugin",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0"
+        ],
+        "description": "Easily add custom fields to nav menu items.",
+        "homepage": "https://github.com/Codeinwp/wp-menu-item-custom-fields",
+        "keywords": [
+            "custom-fields",
+            "menu",
+            "plugin",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "codeinwp/themeisle-sdk",
+        "version": "3.1.7",
+        "version_normalized": "3.1.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Codeinwp/themeisle-sdk.git",
+            "reference": "5162163ec2d609e0b61e382f8fcf6ad47cca3293"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/5162163ec2d609e0b61e382f8fcf6ad47cca3293",
+            "reference": "5162163ec2d609e0b61e382f8fcf6ad47cca3293",
+            "shasum": ""
+        },
+        "require-dev": {
+            "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
+            "squizlabs/php_codesniffer": "^3.1",
+            "wp-coding-standards/wpcs": "^1.0.0"
+        },
+        "time": "2019-11-07 12:16:41",
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "ThemeIsle team",
+                "email": "friends@themeisle.com",
+                "homepage": "https://themeisle.com"
+            }
+        ],
+        "description": "ThemeIsle SDK.",
+        "homepage": "https://github.com/Codeinwp/themeisle-sdk",
+        "keywords": [
+            "wordpress"
+        ]
+    }
+]

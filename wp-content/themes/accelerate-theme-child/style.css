@@ -111,3 +111,24 @@ Text Domain:  accelerate-theme-child
     font-weight: 500;
     margin-top: 1em;
 }
+
+/****Social Media Icons****/
+
+.social-media-navigation {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.social-media-menu .menu-item {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #3b3b3b;
+    height: 1.65em;
+    width: 1.65em;
+    text-align: center;
+}
+
+i {
+    color: white;
+    padding: .6em .2em;
+}
