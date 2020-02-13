@@ -61,7 +61,7 @@ Text Domain:  accelerate-theme-child
 .case-study-sidebar h2 {
     font-weight: 500;
     font-size: 1.5em;
-    margin: 4em 0 0 0;
+    margin: 3em 0 0 0;
 }
 
 .case-study-sidebar h3 {
@@ -80,10 +80,25 @@ Text Domain:  accelerate-theme-child
 
 .case-study-images {
     padding-top: 2em;
-    width: 100%;
+    width: 85%;
 }
 
 .case-study-images img {
     padding-bottom: 3em;
     width: 100%;
+}
+
+/***Main Page Featured Work***/
+
+.featured-work h4 {
+    text-align: center;
+}
+
+.individual-featured-work {
+    display: inline-block;
+    width: 33%;
+}
+
+.individual-featured-work a {
+    font-weight: 500;
 }
