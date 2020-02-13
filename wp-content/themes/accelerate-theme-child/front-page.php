@@ -18,7 +18,7 @@ get_header(); ?>
 		<div class="main-content" role="main">
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php the_content(); ?>
-				<a class="button" href="<?php echo site_url('/blog/') ?>">View Our Work</a>
+				<a class="button" href="<?php echo site_url('/case-studies/') ?>">View Our Work</a>
 			<?php endwhile; // end of the loop. ?>
 		</div><!-- .main-content -->
 	</div><!-- #primary -->
@@ -35,7 +35,7 @@ get_header(); ?>
 						<li class="individual-featured-work">
 							<figure>
 								<a href="<?php the_permalink(); ?>">
-									<?php echo wp_get_attachment_image($image_1, $size); ?>
+								<img src="<?php echo $image_1; ?>" >
 								</a>
 							</figure>
 
