@@ -31,7 +31,7 @@ get_header(); ?>
                 
                 <div class="case-study-images">
                     <?php if($image_1) { ?>
-                        <a href="<?php the_permalink(); ?>"><img src="<?php echo $image_1; ?>" ></a>
+                        <a href="<?php the_permalink(); ?>"><?php echo wp_get_attachment_image($image_1, $size); ?></a>
                     <?php } ?>
                 </div>
             </article>

@@ -20,6 +20,7 @@ get_header(); ?>
 				$services = get_field('services');
 				$client = get_field('client');
 				$link = get_field('site_link');
+				$size = "full";
 				$image_1 = get_field('image_1');
 				$image_2 = get_field('image_2');
 				$image_3 = get_field('image_3');
@@ -38,15 +39,15 @@ get_header(); ?>
 		</aside>
 		
 		<div class="case-study-images">
-			<?php if($image_1) { ?>
-				<img src="<?php echo $image_1; ?>" >
-			<?php } ?>
-			<?php if($image_2) { ?>
-				<img src="<?php echo $image_2; ?>" >
-			<?php } ?>
-			<?php if($image_3) { ?>
-				<img src="<?php echo $image_3; ?>" >
-			<?php } ?>
+			<?php if($image_1) { 
+				echo wp_get_attachment_image($image_1, $size); 
+			} ?>
+			<?php if($image_2) { 
+				echo wp_get_attachment_image($image_2, $size); 
+			} ?>
+			<?php if($image_3) { 
+				echo wp_get_attachment_image($image_3, $size); 
+			} ?>
 		</div>
 	</article>
 	<?php endwhile; // end of the loop. ?>
