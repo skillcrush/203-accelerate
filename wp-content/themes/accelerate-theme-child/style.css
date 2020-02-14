@@ -169,14 +169,14 @@ i {
     clear: right;
 }
 
-/*nf-fields-wrap {
-    display: flex;
-    flex-flow: row wrap;
-}*/
 
 #nf-field-3 {
     border: 1px solid #BFBFBF;
     font-size: 1em;
+}
+
+textarea {
+    resize: none;
 }
 
 #nf-field-4 { /**button**/
