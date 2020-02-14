@@ -132,3 +132,56 @@ i {
     color: white;
     padding: .6em .2em;
 }
+
+/****Contact Page****/
+
+.page-id-47357 .main-content {
+    padding: 0 10em;
+}
+
+.page-id-47357 h2 {
+    font-size: 1.5em;
+    font-family: 'Montserrat';
+}
+
+.page-id-47357 p {
+    font-family: 'Montserrat';
+    font-size: 1em;
+}
+
+.nf-form-fields-required {
+    display: none;
+}
+
+.ninja-forms-req-symbol {
+    display: none;
+}
+
+
+#nf-field-1-container{
+    float: left;
+    width: 45%;
+}
+
+#nf-field-2-container {
+    float: right;
+    width: 45%;
+    clear: right;
+}
+
+/*nf-fields-wrap {
+    display: flex;
+    flex-flow: row wrap;
+}*/
+
+#nf-field-3 {
+    border: 1px solid #BFBFBF;
+    font-size: 1em;
+}
+
+#nf-field-4 { /**button**/
+    background-color: #45ac9d;
+    float: right;
+    font-size: 1.06em;
+    padding: 1.25em 4.75em 1.25em 4.75em;
+}

@@ -1,0 +1,6 @@
+<script id="tmpl-nf-field-number" type="text/template">
+<input id="nf-field-{{{ data.id }}}" name="nf-field-{{{ data.id }}}" aria-invalid="false" aria-describedby="nf-error-{{{ data.id }}}" class="{{{ data.renderClasses() }}} nf-element"
+	       aria-labelledby="nf-label-field-{{{ data.id }}}"
+			{{{ data.maybeRequired() }}}
+	       type="number" value="{{{ data.renderNumberDefault() }}}" min="{{{ data.num_min }}}" max="{{{ data.num_max }}}" step="{{{ data.num_step }}}" {{{ data.renderPlaceholder() }}}>
+</script>
