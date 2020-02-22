@@ -280,3 +280,27 @@ i {
     padding: 1em 3.25em;
     margin: 1.11em 0;
 }
+
+/*** 404 ***/
+
+.error-page-text {
+    background: url('img/stars-1246590_1920.jpg');
+    color: lightgray;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    margin: 0;
+    font-size: 1.25em;
+    padding: 2em 4em;
+}
+
+.error-page-text h1 {
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 2em;
+}
+
+.error-page-text a {
+    color: indianred;
+    text-align: left;
+    font-weight: 900;
+    font-size: 3em;
+}
