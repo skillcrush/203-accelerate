@@ -82,16 +82,121 @@ this["wp"] = this["wp"] || {}; this["wp"]["hooks"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 366);
+/******/ 	return __webpack_require__(__webpack_require__.s = 482);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 366:
+/***/ 17:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _toConsumableArray; });
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
+var arrayLikeToArray = __webpack_require__(27);
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return Object(arrayLikeToArray["a" /* default */])(arr);
+}
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
+var iterableToArray = __webpack_require__(37);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
+var unsupportedIterableToArray = __webpack_require__(31);
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js
+
+
+
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || Object(iterableToArray["a" /* default */])(arr) || Object(unsupportedIterableToArray["a" /* default */])(arr) || _nonIterableSpread();
+}
+
+/***/ }),
+
+/***/ 27:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _arrayLikeToArray; });
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+/***/ }),
+
+/***/ 31:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _unsupportedIterableToArray; });
+/* harmony import */ var _babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(27);
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return Object(_babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Object(_babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(o, minLen);
+}
+
+/***/ }),
+
+/***/ 37:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _iterableToArray; });
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+
+/***/ }),
+
+/***/ 482:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "createHooks", function() { return /* reexport */ build_module_createHooks; });
+__webpack_require__.d(__webpack_exports__, "addAction", function() { return /* binding */ addAction; });
+__webpack_require__.d(__webpack_exports__, "addFilter", function() { return /* binding */ addFilter; });
+__webpack_require__.d(__webpack_exports__, "removeAction", function() { return /* binding */ removeAction; });
+__webpack_require__.d(__webpack_exports__, "removeFilter", function() { return /* binding */ removeFilter; });
+__webpack_require__.d(__webpack_exports__, "hasAction", function() { return /* binding */ hasAction; });
+__webpack_require__.d(__webpack_exports__, "hasFilter", function() { return /* binding */ hasFilter; });
+__webpack_require__.d(__webpack_exports__, "removeAllActions", function() { return /* binding */ removeAllActions; });
+__webpack_require__.d(__webpack_exports__, "removeAllFilters", function() { return /* binding */ removeAllFilters; });
+__webpack_require__.d(__webpack_exports__, "doAction", function() { return /* binding */ doAction; });
+__webpack_require__.d(__webpack_exports__, "applyFilters", function() { return /* binding */ applyFilters; });
+__webpack_require__.d(__webpack_exports__, "currentAction", function() { return /* binding */ currentAction; });
+__webpack_require__.d(__webpack_exports__, "currentFilter", function() { return /* binding */ currentFilter; });
+__webpack_require__.d(__webpack_exports__, "doingAction", function() { return /* binding */ doingAction; });
+__webpack_require__.d(__webpack_exports__, "doingFilter", function() { return /* binding */ doingFilter; });
+__webpack_require__.d(__webpack_exports__, "didAction", function() { return /* binding */ didAction; });
+__webpack_require__.d(__webpack_exports__, "didFilter", function() { return /* binding */ didFilter; });
+__webpack_require__.d(__webpack_exports__, "actions", function() { return /* binding */ build_module_actions; });
+__webpack_require__.d(__webpack_exports__, "filters", function() { return /* binding */ build_module_filters; });
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/hooks/build-module/validateNamespace.js
 /**
@@ -345,24 +450,38 @@ function createRemoveHook(hooks, removeAll) {
  * @param  {Object}   hooks Stored hooks, keyed by hook name.
  *
  * @return {Function}       Function that returns whether any handlers are
- *                          attached to a particular hook.
+ *                          attached to a particular hook and optional namespace.
  */
 function createHasHook(hooks) {
   /**
-   * Returns how many handlers are attached for the given hook.
+   * Returns whether any handlers are attached for the given hookName and optional namespace.
    *
-   * @param  {string}  hookName The name of the hook to check for.
+   * @param {string}  hookName  The name of the hook to check for.
+   * @param {?string} namespace Optional. The unique namespace identifying the callback
+   *                                      in the form `vendor/plugin/function`.
    *
    * @return {boolean} Whether there are handlers that are attached to the given hook.
    */
-  return function hasHook(hookName) {
+  return function hasHook(hookName, namespace) {
+    // Use the namespace if provided.
+    if ('undefined' !== typeof namespace) {
+      return hookName in hooks && hooks[hookName].handlers.some(function (hook) {
+        return hook.namespace === namespace;
+      });
+    }
+
     return hookName in hooks;
   };
 }
 
 /* harmony default export */ var build_module_createHasHook = (createHasHook);
 
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
+var toConsumableArray = __webpack_require__(17);
+
 // CONCATENATED MODULE: ./node_modules/@wordpress/hooks/build-module/createRunHook.js
+
+
 /**
  * Returns a function which, when invoked, will execute all callbacks
  * registered to a hook of the specified type, optionally returning the final
@@ -392,7 +511,9 @@ function createRunHook(hooks, returnFirstArg) {
     }
 
     hooks[hookName].runs++;
-    var handlers = hooks[hookName].handlers;
+    var handlers = hooks[hookName].handlers; // The following code is stripped from production builds.
+
+    if (false) {}
 
     for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
@@ -571,25 +692,6 @@ function createHooks() {
 /* harmony default export */ var build_module_createHooks = (createHooks);
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/hooks/build-module/index.js
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addAction", function() { return addAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addFilter", function() { return addFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeAction", function() { return removeAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeFilter", function() { return removeFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasAction", function() { return hasAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasFilter", function() { return hasFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeAllActions", function() { return removeAllActions; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeAllFilters", function() { return removeAllFilters; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "doAction", function() { return doAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "applyFilters", function() { return applyFilters; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentAction", function() { return currentAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentFilter", function() { return currentFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "doingAction", function() { return doingAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "doingFilter", function() { return doingFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "didAction", function() { return didAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "didFilter", function() { return didFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "actions", function() { return build_module_actions; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filters", function() { return build_module_filters; });
-/* concated harmony reexport createHooks */__webpack_require__.d(__webpack_exports__, "createHooks", function() { return build_module_createHooks; });
 /**
  * Internal dependencies
  */

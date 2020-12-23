@@ -1,3 +1,4 @@
+/*! This file is auto-generated */
 .wp-pointer-content {
 	padding: 0 0 10px;
 	position: relative;
@@ -13,7 +14,7 @@
 	padding: 15px 60px 14px 18px;
 	border: 1px solid #3592b6;
 	border-bottom: none;
-	line-height: 1.4em;
+	line-height: 1.4;
 	font-size: 14px;
 	color: #fff;
 	background: #00a0d2;
@@ -28,7 +29,7 @@
 	position: absolute;
 	top: 8px;
 	right: 15px;
-	speak: none;
+	speak: never;
 	text-align: center;
 	width: 32px;
 	height: 32px;
@@ -68,7 +69,7 @@
 	content: "\f153";
 	display: block !important;
 	font: normal 16px/1 dashicons;
-	speak: none;
+	speak: never;
 	margin: 1px 0;
 	text-align: center;
 	-webkit-font-smoothing: antialiased !important;

@@ -1,3 +1,4 @@
+/*! This file is auto-generated */
 /*------------------------------------------------------------------------------
  Interim login dialog
 ------------------------------------------------------------------------------*/
@@ -96,7 +97,7 @@
 #wp-auth-check-wrap .wp-auth-check-close:before {
 	content: "\f158";
 	font: normal 20px/22px dashicons;
-	speak: none;
+	speak: never;
 	-webkit-font-smoothing: antialiased !important;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -112,7 +113,7 @@
 
 #wp-auth-check-wrap .wp-auth-fallback {
 	font-size: 14px;
-	line-height: 21px;
+	line-height: 1.5;
 	padding: 0 25px;
 	display: none;
 }
