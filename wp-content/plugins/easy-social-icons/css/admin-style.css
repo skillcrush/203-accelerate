@@ -1,0 +1,29 @@
+#sortable { list-style-type: none; margin: 10px 0 0; padding: 0; width: 100%; }
+#sortable ul { margin-left:20px; list-style: none; }
+#sortable li { padding: 2px 0px; margin: 4px 0px;  border: 1px solid #DDDDDD; cursor: move; -moz-border-radius:6px;}
+#sortable li span { display: block; background: #f7f7f7;  padding: 5px 10px; color:#808080; font-size:13px; font-weight:bold;}
+#sortable li.placeholder{border: dashed 2px #ccc;background-color:#FFF;height:32px;}
+.content_wrapper{ display:table; width:100%;}
+.content_wrapper .left{ display:table-cell; float:none; vertical-align:top; }
+.content_wrapper .right{ display:table-cell; float:none; vertical-align:top; width:261px; padding:0 0 0 20px; }
+.content_wrapper .right .cn_admin_banner a{margin-bottom: 20px; display: block;}
+.cnss-esi-shadow{
+border:1px solid #ebebeb; padding:5px 20px; background:#fff; margin-bottom:40px;
+-webkit-box-shadow: 4px 4px 10px 0px rgba(50, 50, 50, 0.1);
+-moz-box-shadow:    4px 4px 10px 0px rgba(50, 50, 50, 0.1);
+box-shadow:         4px 4px 10px 0px rgba(50, 50, 50, 0.1);	
+}
+.cnss-esi-shadow .sec-title{
+border: 1px solid #ebebeb;
+background: #fff;
+color: #d54e21;
+padding: 2px 4px;
+}
+.cnss-esi-review{background-color: #0073aa; padding:1px 15px;color: #fff;}
+.cnss-esi-review p{font-size: 17px;}
+.cnss-esi-review p a{color: #fff;}
+@media screen and (max-width: 1200px) {
+.content_wrapper .left{ float:left; width:100%; }
+.content_wrapper .right{ float:left; width:100%; padding:20px 0 0 0; }
+.content_wrapper .right .cn_admin_banner a{margin-right: 20px; display: inline;}
+}

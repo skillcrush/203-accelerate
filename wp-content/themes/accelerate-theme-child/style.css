@@ -1,0 +1,108 @@
+/*
+Theme Name:   Accelerate Theme Child
+Theme URI:    http://example.com/accelerate-theme-child/
+Description:  Accelerate Child Theme - Accelerate
+Author:   	Your Name!
+Author URI:   http://example.com
+Template: 	accelerate-theme
+Version:      2.0.0
+Tags:     	light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+Text Domain:  accelerate-theme-child
+*/
+
+.home-page {
+    background: url("img/taxi-photo.jpg") no-repeat scroll right center / cover rgba(0, 0, 0, 0);
+}
+
+.hero-content {
+    margin-bottom: 50px;
+}
+
+#masthead {
+    background: none repeat scroll 0 0 #45ac9d;
+}
+
+.button {
+	background: #45ac9d;
+}
+
+.blog-post {
+    width: 50%;
+    float: left;
+    margin-bottom: 2em;
+}
+
+.blog-post h4 {
+    font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
+    color: #a6a6a6;
+    text-transform: uppercase;
+    margin: 2em 0 .5em;
+}
+
+.blog-post h3 {
+    font-size: 1em;
+}
+
+.read-more-link {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    color: #45ac9d;
+    text-transform: uppercase;
+}
+
+/* Case Studies Page */
+.case-study-sidebar {
+    width: 35%;
+    float: left;
+    margin-right: 8%;
+}
+.case-study-sidebar h2 {
+    margin-bottom: 0;
+}
+.case-study-sidebar h4 {
+    color: #acacac;
+    font-size: .75em;
+    margin: 0;
+}
+.case-study-sidebar h4 span {
+    color: black;
+}
+.case-study-sidebar p {
+    font-size: .9em;
+}
+.case-study-images {
+    float: left;
+    width: 55%;
+    margin: auto;
+}
+div.case-study-image img {
+    width: 100%;
+    height: auto;
+}
+
+/* Homepage Featured Work*/
+.featured-work h4 {
+    text-transform: uppercase;
+    margin: auto;
+    font-size: 1em;
+    text-align: center;
+}
+.featured-work ul {
+    list-style-type: none;
+}
+.featured-work li {
+    float: left;
+    text-align: center;
+    width: 31%;
+    margin-right: 2%;
+}
+.feature-work li:last-of-type {
+    margin-right: 0;
+}
+.homepage-featured-work h3 {
+    margin-top: 10px;
+    font-size: .85em;
+}
+.recent-posts .blog-post {
+    clear: both;
+}
