@@ -16,7 +16,7 @@
 			<div class="entry-meta">
 				<time class="entry-time"><?php echo get_the_date(); ?></time>
 			</div>
-			<h2 class="entry-title"><?php the_title(); ?></h2>
+			<h1 class="entry-title"><?php the_title(); ?></h1>
 		</header>
 		<div class="entry-summary">
 			<?php if ( has_post_thumbnail() ) : ?>
