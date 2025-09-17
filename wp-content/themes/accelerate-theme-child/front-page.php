@@ -27,11 +27,11 @@ get_header(); ?>
 <section class="recent-posts">
 	<div class="site-content">
 		<div class="blog-post">
-			<h4>From the Blog</h4>
+			<h3>From the Blog</h3>
 			<?php query_posts('posts_per_page=1'); ?>
 				<!-- the loop -->
 				<?php while ( have_posts() ) : the_post(); ?>
-					<h3><?php the_title(); ?></h3>
+					<h4><?php the_title(); ?></h4>
 					<?php the_excerpt(); ?>
 				<?php endwhile; // end of the loop. ?>
 			<?php wp_reset_query(); // resets the altered query back to the original ?>
