@@ -1,14 +1,18 @@
 /*
- Theme Name:   Accelerate Theme Child
- Theme URI:    http://example.com/accelerate-theme-child/
- Description:  Accelerate Child Theme - Accelerate
- Author:       Your Name!
- Author URI:   http://example.com
- Template:     accelerate-theme
- Version:      2.0.0
- Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
- Text Domain:  accelerate-theme-child
+Theme Name:   Accelerate Theme Child
+Theme URI:    http://example.com/accelerate-theme-child/
+Description:  Accelerate Child Theme - Accelerate
+Author:   	Your Name!
+Author URI:   http://example.com
+Template: 	accelerate-theme
+Version:      2.0.0
+Tags:     	light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+Text Domain:  accelerate-theme-child
 */
+
+/* body {
+  background: red;
+} */
 
 /* HOMEPAGE STYLES */
 #masthead {
@@ -57,6 +61,20 @@
 }
 
 /* blog post on homepage */
+
+.blog-post {
+  width: 50%;
+  float: left;
+  margin-bottom: 2em;
+}
+
+.blog-post h3 {
+  font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
+  color: #6E6E6E;
+  text-transform: uppercase;
+  margin: 2em 0 .5em;
+}
+
 .blog-post h3 {
   font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
   color: #6E6E6E;
@@ -74,6 +92,50 @@
   color: #348377;
   text-transform: uppercase;
 }
+
+.twitter-widget {
+  width: 45%;
+  /*  float: left; */
+  /* line 100 */
+  margin-bottom: 2em;
+  display: inline-block;
+}
+
+.twitter-widget h3 {
+  font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
+  color: #6E6E6E;
+  text-transform: uppercase;
+  margin: 2em 0 .5em;
+}
+
+.twitter-widget h4 {
+  font-size: 1.5em;
+}
+
+.twitter-widget .follow-us-link {
+  font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
+  color: #348377;
+  text-transform: uppercase;
+}
+
+.tweets {
+  margin-left: 0;
+}
+
+.tweets li {
+  list-style-type: none;
+}
+
+.stt-em a {
+  display: none;
+}
+
+.blog-twitter-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* END HOMEPAGE STYLES */
 
 /*Case Studies*/
 .case-study {
@@ -108,6 +170,120 @@ div.case-study-images img {
 }
 
 /*END Case Studies*/
+
+/* Case Studies archive */
+
+div.case-study-images img {
+  width: 100%;
+  height: auto;
+}
+
+/* END Case Studies archive*/
+
+/* About page */
+.about-page {
+  background: url("img/death-to-stock-nyc6.png") no-repeat scroll right center / cover rgba(0, 0, 0, 0);
+  height: auto;
+  margin: 0 0 5em;
+  padding: 8em 0;
+  text-align: center;
+}
+
+.about-hero-content h3 {
+  color: #fff;
+  font-family: 'Open Sans';
+  font-size: 1.4em;
+  font-weight: normal;
+  max-width: 42%;
+  margin: 0 auto;
+}
+
+.services-list {
+  max-width: 76%;
+  margin: 0 auto;
+}
+
+.about-services {
+  text-align: center;
+}
+
+.about-services p {
+  width: 55%;
+}
+
+.services-offered {
+  margin-top: 68px;
+  margin-bottom: 68px;
+  justify-content: space-between;
+}
+
+.services-offered-images {
+  float: left;
+}
+
+.services-offered-images a img {
+  width: 216px;
+}
+
+.services-offered-sidebar {
+  width: 65%;
+  float: right;
+}
+
+.services-offered:nth-child(even) {
+  display: -webkit-flex;
+  /* Safari */
+  -webkit-flex-direction: row-reverse;
+  /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.contact-link-section {
+  clear: both;
+  margin: 0 auto;
+  max-width: 75%;
+  border-top: 2px solid #ddd;
+}
+
+.cta {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.cta h3 {
+  float: left;
+  width: 35%;
+  text-transform: none;
+}
+
+.cta a {
+  /*width: 25%;*/
+  float: left;
+  margin-top: 20px;
+}
+
+/* End About page */
+
+/* Footer social media icons */
+.social-media-menu li {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 10px;
+  font-size: 1.5em;
+  background: black;
+  border-radius: 50%;
+}
+
+.social-media-menu i {
+  color: white;
+  margin-left: 5px;
+}
+
+/* End Footer social media icons */
 
 /* Media Queries */
 @media (min-width: 768px) {
