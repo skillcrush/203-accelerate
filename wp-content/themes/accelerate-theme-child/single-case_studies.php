@@ -25,9 +25,9 @@ get_header(); ?>
 
 	<article class="case-study clearfix">
 		<aside class="case-study-sidebar">
-			<h2><?php the_title(); ?></h2>
-			<h4><span><?php echo $services; ?></span></h4>
-			<h4>Client: <?php echo $client; ?></h4>
+			<h1><?php the_title(); ?></h1>
+			<h2><span><?php echo $services; ?></span></h2>
+			<h2>Client: <?php echo $client; ?></h2>
 
 			<?php the_content(); ?>
 
